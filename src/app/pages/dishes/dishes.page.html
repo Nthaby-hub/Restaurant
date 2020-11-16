@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center"> Dishes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+    <ion-item>
+      <ion-label>Dish Name:</ion-label>
+      <ion-input [(ngModel)]="food.name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dish Details:</ion-label>
+      <ion-input [(ngModel)]="food.details" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price:</ion-label>
+      <ion-input [(ngModel)]="food.price" type="number"></ion-input>
+    </ion-item>
+    <input type="file" (change)="insertFile($event)">
+    <div>{{ uploadPercent | async }}</div>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    <br><img [src]="profileUrl | async" height="300px" />
+    <ion-item lines="none">
+      <ion-button (click)="addFood()" (click)="insertFile()">Upload Dish</ion-button>
+    </ion-item>
+  </div>
+
+  <h4 align="center">Available Dishes</h4>
+
+    <ion-card *ngFor="let prod of items">
+      <ion-card-header>
+        <ion-card-title>{{prod.name}}</ion-card-title>
+      </ion-card-header>
+        
+      <ion-card-content>
+        <ion-item lines="none">
+          <img [src]="prod.image" height="100px">
+        </ion-item>
+        <ion-item lines="none">
+          <b>Price: R{{prod.price}} </b>
+        </ion-item>
+        <ion-button (click)="presentModal()">edit</ion-button>
+        <ion-button>delete</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

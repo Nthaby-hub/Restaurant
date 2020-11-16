@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngFor="let c of cart">
+    <ion-item>
+      <ion-list> {{c.name}} </ion-list>
+      <ion-icon slot="end" name="trash-outline" (click)="deleteProduct(c)"></ion-icon>
+    </ion-item>
+  </div>
+  
+
+</ion-content>

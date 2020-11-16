@@ -11,6 +11,50 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'restaurant1',
+    loadChildren: () => import('./pages/restaurant1/restaurant1.module').then( m => m.Restaurant1PageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'orders',
+    loadChildren: () => import('./pages/orders/orders.module').then( m => m.OrdersPageModule)
+  },
+  {
+    path: 'dishes',
+    loadChildren: () => import('./pages/dishes/dishes.module').then( m => m.DishesPageModule)
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
+  },
+  {
+    path: 'user-book',
+    loadChildren: () => import('./pages/user-book/user-book.module').then( m => m.UserBookPageModule)
+  },
+  {
+    path: 'reservations',
+    loadChildren: () => import('./pages/reservations/reservations.module').then( m => m.ReservationsPageModule)
+  },
+  {
+    path: 'slides',
+    loadChildren: () => import('./pages/slides/slides.module').then( m => m.SlidesPageModule)
+  },
+  {
+    path: 'rest-profile',
+    loadChildren: () => import('./pages/rest-profile/rest-profile.module').then( m => m.RestProfilePageModule)
+  },
 ];
 
 @NgModule({

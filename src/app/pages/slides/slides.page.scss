@@ -1,0 +1,13 @@
+ion-slides {
+    height: 100%;
+  }
+
+  ion-content{
+      --background: url(/assets/slide.jpg) no-repeat center center / cover;
+
+  }
+  
+  h1{
+      color: white;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }

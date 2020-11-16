@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Booking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h4>Reserve a table</h4>
+
+  <ion-item>
+    <ion-input type="text" placeholder="Enter Name(s)" [(ngModel)]="reserve.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" placeholder="Number of people" [(ngModel)]="reserve.people"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime value="2020-12-19" placeholder="Select Date" [(ngModel)]="reserve.date"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Time</ion-label>
+    <ion-datetime [(ngModel)]="reserve.time" display-format="h:mm A" picker-format="h:mm A" value="2020-12-19T07:43Z"></ion-datetime>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button (click)="book()">book</ion-button>
+  </ion-item>
+
+</ion-content>

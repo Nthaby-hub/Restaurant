@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="profile">
+    <h1 align="center">Profile</h1>
+    <ion-item>
+      <ion-input type="text" placeholder="Restaurant Name" [(ngModel)]="profile.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Identity Number" [(ngModel)]="profile.id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Email Address" [(ngModel)]="profile.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Contact Number" [(ngModel)]="profile.number"></ion-input>
+    </ion-item>
+    <!-- <ion-item lines="none">
+      <input type="file" (change)="insertFile($event)">
+    <div>{{ uploadPercent | async }}</div>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    <br><img [src]="profileUrl | async" height="300px" />
+    </ion-item> -->
+      <ion-button expand="block" (click)="saveProfile()">save</ion-button>
+  </div>
+
+  <div class="profil" *ngFor="let p of items">
+    <ion-item lines="none">
+      <ion-label>
+        Restaurant Name:{{p.name}}
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        {{p.Email}}
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        {{p.number}}
+      </ion-label>
+    </ion-item>
+  </div>
+
+</ion-content>

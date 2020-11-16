@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Restaurant</ion-title>
+    <!-- <ion-button color="secondary" size="small" slot="end" shape="round" (click)="openCart()" #cart>
+      {{ itemCount | async }}
+      <ion-icon name="cart" slot="end"></ion-icon>
+    </ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let prod of items">
+    <ion-card-header>
+      <ion-card-title>{{prod.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <img [src]="prod.image" height="100px">
+      </ion-item>
+      <ion-item lines="none">
+        <b>Price: R{{prod.price}} </b>
+      </ion-item>
+      <!-- <ion-item lines="none">
+        <ion-button (click)="addToCart(prod)">Add to Cart</ion-button>
+      </ion-item> -->
+      
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

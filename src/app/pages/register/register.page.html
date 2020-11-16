@@ -1,0 +1,27 @@
+
+
+<ion-content>
+  <div class="register">
+    <h1 align="center">Sign In</h1>
+    <ion-item>
+      <ion-input type="text" placeholder="Full Name(s)" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Identity Number" [(ngModel)]="id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Email Address" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Contact Number" [(ngModel)]="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-input type="password" placeholder="re-Enter Password" [(ngModel)]="rePassword"></ion-input>
+    </ion-item>
+      <ion-button expand="block" (click)="register(email,password)">register</ion-button>
+  </div>
+  
+</ion-content>
