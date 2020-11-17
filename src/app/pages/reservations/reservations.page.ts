@@ -19,6 +19,7 @@ export class ReservationsPage implements OnInit {
         let data: any = a.payload.doc.data();
         data.id = a.payload.doc.id;
         this.items.push(data);
+        console.log('uuu: ', this.items)
       })
     })
   }

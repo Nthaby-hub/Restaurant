@@ -31,5 +31,17 @@
 }
 
 .backg{
-  --background: url(/assets/rest.png) no-repeat ;
+  --background: url(/assets/slide.jpg) no-repeat center center / cover ;
+}
+
+ion-label{
+  text-align: center;
+  color: white;
+}
+ion-item{
+  margin-top: 100px;
+}
+ion-content{
+  text-align: center;
+  margin-top: 50%;
 }

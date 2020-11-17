@@ -24,7 +24,7 @@
     <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
     <br><img [src]="profileUrl | async" height="300px" />
     <ion-item lines="none">
-      <ion-button (click)="addFood()" (click)="insertFile()">Upload Dish</ion-button>
+      <ion-button (click)="addFood()">Upload Dish</ion-button>
     </ion-item>
   </div>
 
@@ -43,7 +43,7 @@
           <b>Price: R{{prod.price}} </b>
         </ion-item>
         <ion-button (click)="presentModal()">edit</ion-button>
-        <ion-button>delete</ion-button>
+        <ion-button (click)="deleteFood(prod.id)">delete</ion-button>
       </ion-card-content>
     </ion-card>
 

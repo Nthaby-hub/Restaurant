@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center">Dashboard</ion-title>
+    <ion-icon (click)="profile()" slot="end" size="large" name="person-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img src="assets/round.jpg">
+
+  <ion-slides [options]="sliderConfig">
+    <ion-slide>
+      <ion-card (click)="dishes()">
+        Available dishes
+      </ion-card>
+      <ion-card (click)="reserv()">
+        Reservations
+      </ion-card>
+      <ion-card (click)="dishes()">
+        Add more dishes
+      </ion-card>
+      <ion-card (click)="reserv()">
+        Reservations
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

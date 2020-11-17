@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service'
 import { CartPage } from '../cart/cart.page'
 import { ModalController } from '@ionic/angular'
+import { Router } from '@angular/router'
+import {Location } from '@angular/common';
 
 @Component({
   selector: 'app-restaurant1',
@@ -14,7 +16,7 @@ export class Restaurant1Page implements OnInit {
   items = [];
   itemCount: BehaviorSubject<number>;
 
-  constructor(private product: ProductsService, private modalCtrl: ModalController) { }
+  constructor(private product: ProductsService, private modalCtrl: ModalController, private rout: Router, private location: Location) { }
 
   ngOnInit() {
     this.product.getMenu().subscribe(data_I => {
@@ -45,6 +47,10 @@ export class Restaurant1Page implements OnInit {
       // this.animateCSS('bounceInLeft');
     });
     modal.present();
+  }
+
+  prev(){
+    this.location.back()
   }
 
 }

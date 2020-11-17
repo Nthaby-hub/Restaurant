@@ -4,17 +4,16 @@ import { Router } from '@angular/router'
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class SignupPage implements OnInit {
 
   email =""
   password =""
   error: {name: string, message: string} = { name: "", message: ""}
-
-  constructor( private authService: AuthService, private route: Router, private location: Location) { }
+  constructor( private authService: AuthService, private route: Router, private location:Location) { }
 
   ngOnInit() {
   }
@@ -24,7 +23,7 @@ export class RegisterPage implements OnInit {
       this.authService.registerUser(email, password)      
       .then((res) => {
         window.alert('registered')
-        this.route.navigateByUrl('login')
+        this.route.navigateByUrl('a-login')
       }).catch((error) => {
         window.alert(error.message)
       })

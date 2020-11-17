@@ -1,40 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service'
+import {Location } from '@angular/common';
 import { Router } from '@angular/router'
+import { AuthService } from 'src/app/services/auth.service'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-a-login',
+  templateUrl: './a-login.page.html',
+  styleUrls: ['./a-login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class ALoginPage implements OnInit {
 
   email =""
   password =""
-  errorMessage = ""
   error: {name: string, message: string} = { name: "", message: ""}
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private location: Location, private rout: Router, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  clearErrorMessage(){
-    this.errorMessage = "";
-    this.error = { name: '', message: ''};
+  prev(){
+    this.location.back()
+  }
+
+  register(){
+    this.rout.navigateByUrl('signup')
   }
 
   login(){
-    this.clearErrorMessage();
 
     if(this.validateForm(this.email,this.password)){
       this.auth.loginEmail(this.email, this.password)
     .then(() => {
-      this.router.navigateByUrl('user-book')
+      this.rout.navigateByUrl('dashboard')
     }).catch(_error => {
       this.error = _error
-      this.router.navigateByUrl('login')
+      this.rout.navigateByUrl('a-login')
     })
     }
   }
@@ -49,12 +50,7 @@ export class LoginPage implements OnInit {
       return false;
     }
 
-    this.errorMessage = "";
     return true;
-  }
-
-  register(){
-    this.router.navigateByUrl('register')
   }
 
 }

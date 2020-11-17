@@ -36,7 +36,15 @@ export class ProductsService {
   }
 
   deleteFood(prod){
-    this.afs.collection('cart').doc(prod.payload.doc.id).delete()
+    this.afs.collection('rest1').doc(prod).delete().then(() => {
+      alert('Deleted successfully')
+    }).catch(err => {
+      alert(err.message + ' Could not delete')
+    })
+  }
+
+  updateFood(food){
+    this.afs.collection('rest1').doc(food.key).update(food) 
   }
 
   //Upload file

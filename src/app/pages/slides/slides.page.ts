@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 
 const slideOpts = {
   on: {
@@ -69,11 +70,13 @@ const slideOpts = {
 
 export class SlidesPage implements OnInit {
 
-  constructor() { }
+  constructor( private rout: Router) { }
 
   ngOnInit() {
   }
 
-  
+  home(){
+    this.rout.navigateByUrl('home');
+  }
 
 }

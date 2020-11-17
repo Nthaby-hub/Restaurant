@@ -55,6 +55,18 @@ const routes: Routes = [
     path: 'rest-profile',
     loadChildren: () => import('./pages/rest-profile/rest-profile.module').then( m => m.RestProfilePageModule)
   },
+  {
+    path: 'a-login',
+    loadChildren: () => import('./pages/a-login/a-login.module').then( m => m.ALoginPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service'
+import { Router } from '@angular/router'
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-user-book',
@@ -11,7 +13,10 @@ export class UserBookPage implements OnInit {
   reserv: string;
   reserve = {} as Reservation
 
-  constructor( private prodService: ProductsService) { }
+  date = moment().toDate()
+
+
+  constructor( private prodService: ProductsService, private rout: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +26,10 @@ export class UserBookPage implements OnInit {
     // this.reserv = Date();
 
     this.prodService.makeReserv(this.reserve)
+  }
+
+  dishes(){
+    this.rout.navigateByUrl('restaurant1')
   }
 
 }

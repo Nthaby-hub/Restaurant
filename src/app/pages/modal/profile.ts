@@ -1,3 +1,4 @@
+
 class Profiling{
     key?: string
     name: string
@@ -13,10 +14,15 @@ class Foods{
     price: number
 }
 
+//date = moment().toDate()
+
 class Reservation{
     key?: string
     name: string
     people: number
+    //date = moment().toDate()
     date: Date
     time: TimeRanges
+
+    // date = moment().toDate()
 }

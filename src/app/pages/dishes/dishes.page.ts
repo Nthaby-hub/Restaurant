@@ -30,6 +30,10 @@ export class DishesPage implements OnInit {
     this.product.addFood(this.food)
   }
 
+  deleteFood(id){
+    this.product.deleteFood(id)
+  }
+
   insertFile(event){
     this.product.uploadFile(event)
   }
@@ -41,5 +45,6 @@ export class DishesPage implements OnInit {
     });
     return await modal.present();
   }
+
 
 }

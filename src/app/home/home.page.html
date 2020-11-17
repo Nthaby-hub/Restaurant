@@ -1,29 +1,29 @@
-<ion-menu side="start" menuId="custom" content-id="content" class="my-custom-menu">
+<!-- <ion-menu side="start" menuId="custom" content-id="content" class="my-custom-menu">
   <ion-header>
     <ion-toolbar color="tertiary">
-      <ion-title>Custom Menu</ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content id="content">
     <ion-list>
-      <ion-item></ion-item>
+      <ion-item>Book</ion-item>
       <ion-item></ion-item>
       <ion-item></ion-item>
       <ion-item></ion-item>
       <ion-item></ion-item>
     </ion-list>
   </ion-content>
-</ion-menu>
+</ion-menu> -->
 
-<ion-header [translucent]="true">
+<!--<ion-header [translucent]="true">
   <ion-toolbar>
-      <ion-icon size="large" color="primary" name="menu-outline" (click)="openCustom()"></ion-icon>
+       <ion-icon size="large" color="primary" name="menu-outline" (click)="openCustom()"></ion-icon> 
     
     <ion-title align="center">
       
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content [fullscreen]="true" class="backg">
   <ion-header collapse="condense">
@@ -32,7 +32,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <img src="assets/rest.png"> -->
+  <ion-item>
+    <ion-label (click)="customer()">Customer</ion-label>
+    <ion-label (click)="ownerLogin()" class="owner">Owner</ion-label>
+  </ion-item>
+  
+  <!-- <img src="assets/slide.jpg"> -->
 
   
 </ion-content>

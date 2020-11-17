@@ -1,8 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title></ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
 
@@ -20,15 +15,29 @@
     <ion-item>
       <ion-input type="number" placeholder="Contact Number" [(ngModel)]="profile.number"></ion-input>
     </ion-item>
-    <!-- <ion-item lines="none">
-      <input type="file" (change)="insertFile($event)">
+
+    <input type="file" (change)="fileuploads($event)" multiple class="form-control" style="height: 100%;" accept="image/*">
+    <!-- <input type="file">
     <div>{{ uploadPercent | async }}</div>
     <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
-    <br><img [src]="profileUrl | async" height="300px" />
-    </ion-item> -->
-      <ion-button expand="block" (click)="saveProfile()">save</ion-button>
+    <br><img [src]="profileUrl | async" height="300px" /> -->
+    
+      <ion-button (click)="save()" expand="block" (click)="saveProfile()">save</ion-button>
   </div>
 
+  <ion-card  *ngFor="let image of images"style="margin-top: 15px;">
+    <ion-item>
+      <ion-icon name="pin" slot="end  "></ion-icon>
+      <ion-label>{{image.name}}</ion-label>
+      <br>
+        <img [src] = "image.url">
+      <br>
+    </ion-item>
+    <ion-card-content style="justify-content: center;text-align: center;font-family:cursive;color:#53bec5; font-size:larger;">
+      <ion-icon name="planet"></ion-icon>&nbsp; 
+      <ion-icon name="trash-outline" (click)="deleteImage(image)"></ion-icon>
+    </ion-card-content>
+  </ion-card>
   <div class="profil" *ngFor="let p of items">
     <ion-item lines="none">
       <ion-label>
