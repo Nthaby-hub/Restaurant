@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Profile</ion-title>
+    <ion-button slot="end" (click)="close()" fill="clear" color="dark">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="profile">
+    <h1 align="center">Profile</h1>
+    <ion-item>
+      <ion-input type="text" placeholder="Restaurant Name" [(ngModel)]="profile.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Email Address" [(ngModel)]="profile.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Contact Number" [(ngModel)]="profile.number"></ion-input>
+    </ion-item>
+
+   <!-- <input type="file" (change)="fileuploads($event)" multiple class="form-control" style="height: 100%;" accept="image/*">
+     <input type="file">
+    <div>{{ uploadPercent | async }}</div>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    <br><img [src]="profileUrl | async" height="300px" /> -->
+    
+      <ion-button (click)="close()" (click)="save()" expand="block" (click)="saveProfile()">SAVE</ion-button>
+  </div>
+</ion-content>

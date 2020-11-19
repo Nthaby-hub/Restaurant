@@ -31,5 +31,8 @@ export class UserBookPage implements OnInit {
   dishes(){
     this.rout.navigateByUrl('restaurant1')
   }
+  logout(){
+    this.rout.navigateByUrl('login')
+  }
 
 }

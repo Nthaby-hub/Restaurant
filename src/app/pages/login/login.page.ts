@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service'
 import { Router } from '@angular/router'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
   errorMessage = ""
   error: {name: string, message: string} = { name: "", message: ""}
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private location: Location) { }
 
   ngOnInit() {
   }
@@ -55,6 +56,10 @@ export class LoginPage implements OnInit {
 
   register(){
     this.router.navigateByUrl('register')
+  }
+
+  prev(){
+    this.location.back()
   }
 
 }

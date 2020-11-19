@@ -1,52 +1,36 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service'
 import { ModalController } from '@ionic/angular'
-import { UpdatePage } from '../update/update.page'
-import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-dishes',
-  templateUrl: './dishes.page.html',
-  styleUrls: ['./dishes.page.scss'],
+  selector: 'app-profile',
+  templateUrl: './profile.page.html',
+  styleUrls: ['./profile.page.scss'],
 })
-export class DishesPage implements OnInit {
+export class ProfilePage implements OnInit {
 
-  items: any;
   Items: any;
   title = 'khumalo3';
   images: any =[];
   allfiles: any =[];
+  profile = {} as Profiling;
 
-  constructor( private product: ProductsService, private modalCtrl: ModalController, private location: Location) { }
+  constructor( private product: ProductsService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.product.getMenu().subscribe(data_I => {
-      this.items = [];
-      data_I.forEach( a => {
-        let data: any = a.payload.doc.data();
-        data.id = a.payload.doc.id;
-        this.items.push(data);
-      })
-    })
   }
 
-  deleteFood(id){
-    this.product.deleteFood(id)
+  
+  saveProfile(){
+    this.product.addProfile(this.profile)
   }
 
-  async presentModal() {
-    const modal = await this.modalCtrl.create({
-      component: UpdatePage,
-      cssClass: ''
-    });
-    return await modal.present();
-  }
 
-  prev(){
-    this.location.back()
+  close(){
+    this.modalCtrl.dismiss();
   }
-
-  fileuploads(event)
+    fileuploads(event)
     {
         const files = event.target.files;
         console.log(files);

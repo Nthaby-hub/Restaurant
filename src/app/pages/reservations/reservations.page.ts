@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-reservations',
@@ -10,7 +11,7 @@ export class ReservationsPage implements OnInit {
 
   items: any
 
-  constructor(private product: ProductsService) { }
+  constructor(private product: ProductsService, private location: Location) { }
 
   ngOnInit() {
     this.product.getReservation().subscribe(data_I => {
@@ -22,6 +23,10 @@ export class ReservationsPage implements OnInit {
         console.log('uuu: ', this.items)
       })
     })
+  }
+
+  prev(){
+    this.location.back()
   }
 
 }

@@ -1,13 +1,24 @@
 ion-card{
-    width: 300px;
-    height: 250px;
-    display: flex;
+    // width: 250px;
+     height: 250px;
+    // display: flex;
 }
 img{
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-     filter: blur(2px);
-     height: 500px;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+     filter: blur(1px);
+     height: 300px;
+     width: 250px;
+}
+
+ion-content{
+    --background: url(/assets/round.jpg) no-repeat center center / cover ;
+}
+
+.slides{
+    background: rgba(253, 233, 246, 0.7);
+    padding: 4px 10px 20px 10px;
+    border-radius: 0 0 28px 28px;
 }

@@ -1,5 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service'
+import { ModalController } from '@ionic/angular'
+import { ProfilePage } from '../profile/profile.page'
 
 @Component({
   selector: 'app-rest-profile',
@@ -8,7 +11,6 @@ import { ProductsService } from 'src/app/services/products.service'
 })
 export class RestProfilePage implements OnInit {
 
-  profile = {} as Profiling;
   items: any;
 
   Items: any;
@@ -16,7 +18,7 @@ export class RestProfilePage implements OnInit {
   images: any =[];
   allfiles: any =[];
 
-  constructor(private product: ProductsService) { }
+  constructor(private product: ProductsService, private location: Location, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.product.getProfile().subscribe(data_I => {
@@ -29,14 +31,17 @@ export class RestProfilePage implements OnInit {
     })
   }
 
-  saveProfile(){
-    this.product.addProfile(this.profile)
-  }
-
   insertFile(event){
     this.product.uploadFile(event)
   }
 
+  async addProfile(){
+    const modal = await this.modalCtrl.create({
+      component: ProfilePage,
+      cssClass: ''
+    });
+    return await modal.present();
+  }
   //banele
   fileuploads(event)
     {
@@ -104,6 +109,10 @@ export class RestProfilePage implements OnInit {
     save()
     {
       console.log(this.allfiles);
+    }
+
+    prev(){
+      this.location.back()
     }
 
 }

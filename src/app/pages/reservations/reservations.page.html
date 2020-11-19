@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
     <ion-title>Reservations</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,14 +11,14 @@
     <ion-item-sliding>
       <ion-item>
         <ion-label>
-          Table for {{i.people}}
+          {{i.people}} People
         </ion-label>
         <ion-label>
           {{i.name}}
         </ion-label>
         <ion-label>
           <!-- {{i.date.seconds * 1000 | date:'yyyy-MM-dd h:mm a'}} -->
-          {{i.date | date: 'yyyy-MM-dd' }}
+          {{i.date  | date: 'dd-MM-yyyy' }}
         </ion-label>
         <ion-label>
           {{i.time| date: 'h:mm'}}
@@ -33,7 +34,5 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-
-  <h6>Confirmed Reservations</h6>
 
 </ion-content>

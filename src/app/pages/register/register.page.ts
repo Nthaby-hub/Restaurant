@@ -47,5 +47,8 @@ export class RegisterPage implements OnInit {
     this.location.back()
   }
 
+  login(){
+    this.route.navigateByUrl('login')
+  }
 
 }

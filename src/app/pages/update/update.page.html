@@ -8,10 +8,46 @@
 </ion-header>
 
 <ion-content>
-
-  <div class="container"  *ngFor="let prod of items">
-    <input type="text" >
-  </div>
   
+  <div class="container">
+    <ion-item>
+      <ion-label>Dish Name:</ion-label>
+      <ion-input [(ngModel)]="food.name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dish Details:</ion-label>
+      <ion-input [(ngModel)]="food.details" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price:</ion-label>
+      <ion-input [(ngModel)]="food.price" type="number"></ion-input>
+    </ion-item>
+    <input type="file" (change)="fileuploads($event)" multiple class="form-control" style="height: 100%;" accept="image/*">
+   <!-- <ion-input type="file" [(ngModel)]="food.image"></ion-input>
+     <input type="file" (change)="insertFile($event)">
+    <div>{{ uploadPercent | async }}</div>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    <br><img [src]="profileUrl | async" height="300px" /> -->
+    <ion-item lines="none">
+      <!-- <ion-button (click)="addFood()">Upload Dish</ion-button> -->
+    </ion-item>
+
+    <div>
+      <ion-card  *ngFor="let image of images"style="margin-top: 15px;">
+        <ion-item>
+          <ion-icon name="pin" slot="end  "></ion-icon>
+          <ion-label>{{image.name}}</ion-label>
+          <br>
+            <img [src] = "image.url">
+          <br>
+        </ion-item>
+        <ion-card-content style="justify-content: center;text-align: center;font-family:cursive;color:#53bec5; font-size:larger;">
+          <ion-icon name="planet"></ion-icon>&nbsp;  K-FOOD 
+          <ion-icon name="trash-outline" (click)="deleteImage(image)"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
+  </div>
 
 </ion-content>

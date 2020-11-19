@@ -10,6 +10,10 @@ export class DashboardPage implements OnInit {
 
   constructor( private rout: Router) { }
 
+  sliderConfig = {
+    slidesPerView: 1.2
+  }
+
   ngOnInit() {
   }
 
@@ -23,5 +27,8 @@ export class DashboardPage implements OnInit {
 
   reserv(){
     this.rout.navigateByUrl('reservations')
+  }
+  add(){
+    this.rout.navigateByUrl('update')
   }
 }

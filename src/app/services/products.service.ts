@@ -37,7 +37,7 @@ export class ProductsService {
 
   deleteFood(prod){
     this.afs.collection('rest1').doc(prod).delete().then(() => {
-      alert('Deleted successfully')
+      
     }).catch(err => {
       alert(err.message + ' Could not delete')
     })

@@ -1,27 +1,27 @@
 <ion-content>
-
-  <div class="book">
-    <div align="end">
+<ion-icon name="log-out-outline" size="large" (click)="logout()"></ion-icon>
+    <div class="menu" align="end">
       <ion-icon (click)="dishes()" name="fast-food-outline"></ion-icon><ion-label (click)="dishes()">View Dishes</ion-label>
     </div>
+  <div class="book">
     <h4 align="center">Reserve a table</h4>
 
     <ion-item>
-      <ion-input type="text" placeholder="Enter Name(s)" [(ngModel)]="reserve.name"></ion-input>
+      <ion-input type="text" placeholder="Enter Name(s)" [(ngModel)]="reserve.name" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" placeholder="Number of people" [(ngModel)]="reserve.people"></ion-input>
+      <ion-input type="number" placeholder="Number of people" [(ngModel)]="reserve.people" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime value="2020-12-19" placeholder="Select Date" [(ngModel)]="reserve.date"></ion-datetime>
+      <ion-datetime value="2020-12-19" placeholder="Select Date" [(ngModel)]="reserve.date" required></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Time</ion-label>
-      <ion-datetime [(ngModel)]="reserve.time" display-format="h:mm A" picker-format="h:mm A" value="2020-12-19T07:43Z"></ion-datetime>
+      <ion-datetime [(ngModel)]="reserve.time" display-format="h:mm A" picker-format="h:mm A" value="2020-12-19T07:43Z" required></ion-datetime>
     </ion-item>
     <ion-item lines="none">
-      <ion-button fill="outline" (click)="book()">book</ion-button>
+      <ion-button fill="outline" (click)="book()">BOOK</ion-button>
     </ion-item>
 
   </div>

@@ -1,5 +1,19 @@
 .login{
-    margin: 50px;
-    //padding: 100px;
+    margin: 12px;
+    
 }
 
+ion-label{
+    font-style: italic;
+    font-weight: 100;
+    
+}
+
+.pic{
+    background: rgba(136, 133, 85, 0.2);
+    border-radius: 0 0 28px 28px;
+}
+
+// ion-content{
+    // --background: linear-gradient(90deg, rgba(255, 255, 255, 1)10% , rgba(255, 255, 255, 1) 40%, rgba(253, 233, 246, 1) 60%, rgba(253, 233, 246, 1) 100%)
+// }

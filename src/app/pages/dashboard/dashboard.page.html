@@ -7,23 +7,60 @@
 
 <ion-content>
 
-  <img src="assets/round.jpg">
+  <!-- <img src="assets/round.jpg"> -->
 
-  <ion-slides [options]="sliderConfig">
-    <ion-slide>
-      <ion-card (click)="dishes()">
-        Available dishes
-      </ion-card>
-      <ion-card (click)="reserv()">
-        Reservations
-      </ion-card>
-      <ion-card (click)="dishes()">
-        Add more dishes
-      </ion-card>
-      <ion-card (click)="reserv()">
-        Reservations
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
+  <div class="slides ion-margin-button">
+    <ion-slides [options]="sliderConfig">
+      <ion-slide>
+        <ion-card (click)="dishes()">
+          <ion-card-header>
+            <ion-card-title>Available dishes</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-icon name="fast-food-outline" size="large"></ion-icon>
+          </ion-card-content>
+          
+          
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card (click)="reserv()">
+          <ion-card-header>
+            <ion-card-title>Reservations</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-icon name="time-outline" size="large"></ion-icon>
+          </ion-card-content>
+          
+        </ion-card>
+      </ion-slide>
+      <!-- <ion-slide>
+        <ion-card (click)="add()">
+          <ion-card-header>
+            <ion-card-title>Add more dishes</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-icon name="add-circle-outline" size="large"></ion-icon>
+          </ion-card-content>
+          
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card (click)="reserv()">
+          <ion-card-header>
+            <ion-card-title>Available dishes</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-icon name="fast-food-outline" size="large"></ion-icon>
+          </ion-card-content>
+          
+        </ion-card>
+      </ion-slide> -->
+    </ion-slides>
+  </div>
 
 </ion-content>

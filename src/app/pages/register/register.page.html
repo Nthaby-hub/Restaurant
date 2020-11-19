@@ -1,4 +1,4 @@
-<ion-icon (click)="prev()" name="arrow-back-outline"></ion-icon>
+<ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
 
 <ion-content>
   <div class="register">
@@ -22,6 +22,12 @@
       <ion-input type="password" placeholder="re-Enter Password" [(ngModel)]="rePassword"></ion-input>
     </ion-item> -->
       <ion-button expand="block" (click)="register(email,password)">sign up</ion-button>
+
+      <ion-item lines="none">
+        <ion-label align="end" color="primary" (click)="login()">Sign In</ion-label>
+      </ion-item>
   </div>
-  
+  <div class="pic">
+    <img src="assets/logo.png">
+  </div>
 </ion-content>

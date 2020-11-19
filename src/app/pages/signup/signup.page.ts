@@ -46,5 +46,8 @@ export class SignupPage implements OnInit {
     this.location.back()
   }
 
+  login(){
+    this.route.navigateByUrl('a-login')
+  }
 
 }
