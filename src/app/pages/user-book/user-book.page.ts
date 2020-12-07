@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service'
 import { Router } from '@angular/router'
 import * as moment from 'moment'
+import {Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-book',
@@ -16,15 +17,12 @@ export class UserBookPage implements OnInit {
   date = moment().toDate()
 
 
-  constructor( private prodService: ProductsService, private rout: Router) { }
+  constructor( private prodService: ProductsService, private rout: Router,private location: Location) { }
 
   ngOnInit() {
   }
 
   book(){
-    // new Date();
-    // this.reserv = Date();
-
     this.prodService.makeReserv(this.reserve)
   }
 
@@ -33,6 +31,10 @@ export class UserBookPage implements OnInit {
   }
   logout(){
     this.rout.navigateByUrl('login')
+  }
+
+  prev(){
+    this.location.back()
   }
 
 }

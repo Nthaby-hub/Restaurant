@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ALoginPageRoutingModule } from './a-login-routing.module';
@@ -13,6 +13,7 @@ import { ALoginPage } from './a-login.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     ALoginPageRoutingModule
   ],
   declarations: [ALoginPage]

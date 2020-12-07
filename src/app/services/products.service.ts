@@ -19,6 +19,10 @@ export class ProductsService {
     return this.afs.collection('cart').snapshotChanges();
   }
 
+  getRestaurant(){
+    return this.afs.collection('restProfile').snapshotChanges();
+  }
+
   getItemCount(){
     return this.itemCount;
   }
@@ -99,6 +103,10 @@ export class ProductsService {
 
  getProfile(){
    return this.afs.collection('restProfile').snapshotChanges()
+ }
+
+ getUser(){
+  return this.afs.collection('UserProfile').snapshotChanges()
  }
 
  

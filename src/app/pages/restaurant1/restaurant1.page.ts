@@ -14,7 +14,7 @@ import {Location } from '@angular/common';
 export class Restaurant1Page implements OnInit {
 
   items = [];
-  itemCount: BehaviorSubject<number>;
+  date: any;
 
   constructor(private product: ProductsService, private modalCtrl: ModalController, private rout: Router, private location: Location) { }
 
@@ -28,7 +28,14 @@ export class Restaurant1Page implements OnInit {
       })
     })
 
-    this.itemCount = this.product.getItemCount();
+    this.product.getReservation().subscribe(data_I => {
+      this.date = [];
+      data_I.forEach( a => {
+        let data: any = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        this.date.push(data);
+      })
+    })
   }
 
   addToCart(prod){

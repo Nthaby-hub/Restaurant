@@ -1,0 +1,33 @@
+
+<ion-content>
+  <ion-icon (click)="prev()" size="large" name="chevron-back-outline"></ion-icon>
+
+  <div class="container">
+  <div *ngFor="let r of items">
+    <h5 align="center" style="color: rgba(83, 32, 65, 0.7);">{{r.companyName}}</h5>
+  </div>
+
+  <h6 align="center">Available Dishes</h6>
+
+  
+      <p (click)="open()" class="top"><u>Reserve a table</u></p>
+      <p (click)="openR()" class="top"><u>My Reservations</u></p>
+  
+    <ion-card *ngFor="let prod of menu">
+      <ion-card-header>
+        <ion-card-title>{{prod.dishName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <img [src]="prod.imgUrl" height="100px">
+        </ion-item>
+        <ion-item lines="none">
+          <b>Price: R{{prod.price}} </b>
+        </ion-item>
+        <p>{{prod.description}} </p>
+        
+      </ion-card-content>
+    </ion-card>
+    </div>
+
+</ion-content>

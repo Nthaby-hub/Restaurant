@@ -1,0 +1,32 @@
+
+  <ion-content>
+  
+    <div class="profile">
+      <h1 align="center">Profile</h1>
+  
+      <form [formGroup]="profileForm" (ngSubmit)="companyProf()">
+        <ion-item>
+          <ion-label position="floating">Full Name:</ion-label>
+          <ion-input type="text" formControlName="companyName" name="companyName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Physical Address:</ion-label>
+          <ion-input type="text" formControlName="address" name="address"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Phone Number:</ion-label>
+          <ion-input type="number" formControlName="phone" name="phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email Address:</ion-label>
+          <ion-input type="email" formControlName="email" name="email"></ion-input>
+        </ion-item>
+        <ion-button class="button" expand="block" shape="round" (click)="companyProf()">
+          Save
+        </ion-button>
+  
+      </form>
+    </div>
+  
+
+</ion-content>

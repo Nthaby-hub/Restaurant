@@ -1,45 +1,38 @@
-<ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
+
 <ion-content>
-  
-  <ion-fab (click)="addProfile()" vertical="top" horizontal="end" slot="fixed">
+  <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
+  <!-- <ion-fab (click)="addProfile()" vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
   
   <h3 align="center">Profile</h3>
 
   <ion-avatar>
     
   </ion-avatar>
-  <ion-card  *ngFor="let image of images"style="margin-top: 15px;">
-    <ion-item>
-      <ion-icon name="pin" slot="end  "></ion-icon>
-      <ion-label>{{image.name}}</ion-label>
-      <br>
-        <img [src] = "image.url">
-      <br>
-    </ion-item>
-    <ion-card-content style="justify-content: center;text-align: center;font-family:cursive;color:#53bec5; font-size:larger;">
-      <ion-icon name="planet"></ion-icon>&nbsp; 
-      <ion-icon name="trash-outline" (click)="deleteImage(image)"></ion-icon>
-    </ion-card-content>
-  </ion-card>
+  
   <div class="profil" *ngFor="let p of items">
-    <ion-item lines="none">
+    <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
       <ion-label>
-        Restaurant Name: {{p.name}}
+        Restaurant Name: {{p.companyName}}
       </ion-label>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
       <ion-label>
-        Email Address: {{p.Email}}
+        Email Address: {{p.email}}
       </ion-label>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
       <ion-label>
-        Contact Number: {{p.number}}
+        Contact Number: {{p.phone}}
       </ion-label>
+    </ion-item>
+    <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
+      Website:<ion-router-link>
+         {{p.website}}
+      </ion-router-link>
     </ion-item>
   </div>
 

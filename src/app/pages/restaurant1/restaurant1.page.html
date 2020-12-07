@@ -1,32 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
-    <ion-title align="center">Dishes</ion-title>
-    <!-- <ion-button color="secondary" size="small" slot="end" shape="round" (click)="openCart()" #cart>
-      {{ itemCount | async }}
-      <ion-icon name="cart" slot="end"></ion-icon>
-    </ion-button> -->
+    <ion-title align="center">My Reservations</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-card *ngFor="let prod of items">
-    <ion-card-header>
-      <ion-card-title>{{prod.name}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item lines="none">
-        <img [src]="prod.image" height="100px">
-      </ion-item>
-      <ion-item lines="none">
-        <b>Price: R{{prod.price}} </b>
-      </ion-item>
-      <!-- <ion-item lines="none">
-        <ion-button (click)="addToCart(prod)">Add to Cart</ion-button>
-      </ion-item> -->
-      
-    </ion-card-content>
-  </ion-card>
+ <ion-list *ngFor="let d of date">
+   <ion-item>
+     <ion-label>Table for {{d.people}} </ion-label> <br> Date: {{d.date | date: 'dd-MM-yyyy'}}<br>Time {{d.time | date: 'h:mm'}} </ion-item>
+ </ion-list>
 
 </ion-content>

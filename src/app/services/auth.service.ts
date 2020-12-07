@@ -3,6 +3,10 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import {Router } from '@angular/router'
 
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +25,36 @@ export class AuthService {
       }
     })
    }
+
+   signAuth(){
+    return firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        console.log('User logged in: ', user);
+      }else{
+        console.log('User logged out:');
+      }
+    });
+  }
+
+   
+   signupRestOwner(email, password){
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
+  }
+
+  //signin owner
+  signinRestOwner(email, password){
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  }
+
+  //reset owner password
+  resetPassword(email){
+    return firebase.auth().sendPasswordResetEmail(email);
+  }
+
+  //logout owner
+  logoutRestOwner(){
+    return firebase.auth().signOut();
+  }
 
    loginEmail(email,password){
     return this.afa.signInWithEmailAndPassword(email,password)

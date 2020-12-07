@@ -11,7 +11,7 @@ export class DashboardPage implements OnInit {
   constructor( private rout: Router) { }
 
   sliderConfig = {
-    slidesPerView: 1.2
+    slidesPerView: 1.5
   }
 
   ngOnInit() {

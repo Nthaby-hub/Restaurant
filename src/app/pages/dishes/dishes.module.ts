@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { DishesPageRoutingModule } from './dishes-routing.module';
@@ -13,7 +13,8 @@ import { DishesPage } from './dishes.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DishesPageRoutingModule
+    DishesPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [DishesPage]
 })

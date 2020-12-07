@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
     if(this.validateForm(this.email,this.password)){
       this.auth.loginEmail(this.email, this.password)
     .then(() => {
-      this.router.navigateByUrl('user-book')
+      this.router.navigateByUrl('complete')
     }).catch(_error => {
       this.error = _error
       this.router.navigateByUrl('login')

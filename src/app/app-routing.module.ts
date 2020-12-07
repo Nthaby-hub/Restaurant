@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'orders',
-    loadChildren: () => import('./pages/orders/orders.module').then( m => m.OrdersPageModule)
-  },
-  {
     path: 'dishes',
     loadChildren: () => import('./pages/dishes/dishes.module').then( m => m.DishesPageModule)
   },
@@ -66,10 +62,27 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },  {
+    path: 'landing',
+    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
+  {
+    path: 'open-restaurant',
+    loadChildren: () => import('./pages/open-restaurant/open-restaurant.module').then( m => m.OpenRestaurantPageModule)
+  },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+  {
+    path: 'complete',
+    loadChildren: () => import('./pages/complete/complete.module').then( m => m.CompletePageModule)
+  },
+
 
 ];
 

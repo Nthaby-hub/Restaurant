@@ -6,11 +6,60 @@
 </ion-header>
 
 <ion-content>
+  <div class="evt">
+
+    <form [formGroup]="eventForm">
+       <h3 style="font-weight: 800;">Add a dish</h3>
+      <ion-item  style="--background: rgba(253, 233, 246, 0.7);">
+        <ion-label>Dish Name</ion-label>
+        <ion-input placeholder="Dish Name" formControlName="dishName"></ion-input>
+      </ion-item>
+  
+      <ion-item  style="--background: rgba(253, 233, 246, 0.7);">
+        <ion-label>Price</ion-label>
+        <ion-input type="number" placeholder="Price" formControlName="price"></ion-input>
+      </ion-item>
+  
+        <ion-label>Dish Image</ion-label>
+          <ion-input type="file" formControlName="imgUrl" accept="image/*" (change)="onFileSelected($event)"></ion-input>
+      
+  
+      <ion-item  style="--background: rgba(253, 233, 246, 0.7);">
+        <ion-label>Description</ion-label>
+        <textarea formControlName="description"></textarea>
+      </ion-item>
+
+      <br>
+      <ion-button style="--background: rgba(247, 155, 214, 0.7);" (click)="eventSubmit()"
+          [disabled]="!eventForm.valid" type="submit">
+          ADD
+        </ion-button> 
+  
+    </form>
+
+    <ion-card *ngFor="let prod of items"  style="--background: rgba(253, 233, 246, 0.7);">
+      <ion-card-header>
+        <ion-card-title>{{prod.name}}</ion-card-title>
+      </ion-card-header>
+        
+      <ion-card-content style="--background: rgba(253, 233, 246, 0.7);">
+        <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
+          <img [src]="prod.imgUrl" height="100px">
+        </ion-item>
+        <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
+          <b>Price: R{{prod.price}} </b>
+        </ion-item>
+        <p>{{prod.description}}</p>
+        <ion-button style="--background: rgba(247, 155, 214, 0.7);" (click)="deleteFood(prod.id)">Delete</ion-button>
+      </ion-card-content>
+    </ion-card>
+  
+  </div>
     <!-- <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="presentModal()">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
-    </ion-fab> -->
+    </ion-fab> 
 
   <div class="image">
     <input type="file" (change)="fileuploads($event)"  accept="image/*">
@@ -33,7 +82,7 @@
         <ion-icon size="large" name="trash-outline" (click)="deleteImage(image)"></ion-icon>
       </ion-card-content>
     </ion-card>
-  </div>
+  </div>-->
 
     <!-- <ion-card *ngFor="let prod of items">
       <ion-card-header>

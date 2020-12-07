@@ -2,3 +2,16 @@ ion-list{
     margin-top: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+ion-content{
+    display: flex;
+    flex-direction: column;
+    
+    --background: url(/assets/book.jpg) no-repeat center center / cover ;
+}
+img{
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+     filter: blur(1px);
+}
