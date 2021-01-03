@@ -2,30 +2,30 @@
 
 <ion-content>
   <div class="register">
-    <h1 align="center">Sign Up</h1>
-    <!-- <ion-item>
-      <ion-input type="text" placeholder="Full Name(s)" [(ngModel)]="name"></ion-input>
+    
+    <form [formGroup]="eventOwnerForm" (ngSubmit)="register()">
+
+      <h1 align="center">Sign Up</h1>
+    <ion-item>
+      <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-input type="email" name="email" formControlName="email" placeholder="Email Address"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" placeholder="Identity Number" [(ngModel)]="id"></ion-input>
-    </ion-item> -->
-    <ion-item>
-      <ion-input type="email" placeholder="Email Address" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <!-- <ion-item>
-      <ion-input type="number" placeholder="Contact Number" [(ngModel)]="number"></ion-input>
-    </ion-item> -->
-    <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" name="password" formControlName="password" placeholder="Password"></ion-input>
     </ion-item>
     <!-- <ion-item lines="none">
       <ion-input type="password" placeholder="re-Enter Password" [(ngModel)]="rePassword"></ion-input>
     </ion-item> -->
-      <ion-button expand="block" (click)="register(email,password)">sign up</ion-button>
+      <ion-button expand="block" (click)="register()">sign up</ion-button>
 
       <ion-item lines="none">
         <ion-label align="end" color="primary" (click)="login()">Sign In</ion-label>
       </ion-item>
+
+    </form>
+    
   </div>
   <div class="pic">
     <img src="assets/logo.png">

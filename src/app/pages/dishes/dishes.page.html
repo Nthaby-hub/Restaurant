@@ -30,7 +30,7 @@
       </ion-item>
 
       <br>
-      <ion-button style="--background: rgba(247, 155, 214, 0.7);" (click)="eventSubmit()"
+      <ion-button style="--background: rgba(247, 155, 214, 0.7);" (click)="dishSubmit()"
           [disabled]="!eventForm.valid" type="submit">
           ADD
         </ion-button> 
@@ -38,20 +38,22 @@
     </form>
 
     <ion-card *ngFor="let prod of items"  style="--background: rgba(253, 233, 246, 0.7);">
-      <ion-card-header>
-        <ion-card-title>{{prod.name}}</ion-card-title>
-      </ion-card-header>
+      
+      <!-- <ion-card-content style="--background: rgba(253, 233, 246, 0.7);"> -->
         
-      <ion-card-content style="--background: rgba(253, 233, 246, 0.7);">
-        <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
-          <img [src]="prod.imgUrl" height="100px">
-        </ion-item>
-        <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
+          <img [src]="prod.imgUrl" width="100%">
+      <div class="info">
+        <ion-label style="--background: rgba(253, 233, 246, 0.7); font-size: large;">
+          {{prod.dishName}}
+        </ion-label>
+        <p class="descrip">{{prod.description}}</p>
+        <ion-label lines="none" style="--background: rgba(253, 233, 246, 0.7);">
           <b>Price: R{{prod.price}} </b>
-        </ion-item>
-        <p>{{prod.description}}</p>
-        <ion-button style="--background: rgba(247, 155, 214, 0.7);" (click)="deleteFood(prod.id)">Delete</ion-button>
-      </ion-card-content>
+        </ion-label>
+      </div>
+      <ion-icon size="large" name="trash-outline"  (click)="deleteFood(prod.id)"></ion-icon>
+        <!-- <ion-button style="--background: rgba(247, 155, 214, 0.7);" (click)="deleteFood(prod.id)">Delete</ion-button> -->
+      <!-- </ion-card-content> -->
     </ion-card>
   
   </div>

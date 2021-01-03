@@ -96,7 +96,7 @@ export class DishesPage implements OnInit {
     });
   }
 
-  async eventSubmit(){
+  async dishSubmit(){
 
     const alert = await this.alertCtrl.create({
 

@@ -1,11 +1,27 @@
+ion-content{
+    width: 100%;
+    height: 100%;
+    --background: salmon;
+}
 ion-label{
     font-style: italic;
     font-weight: 100;
     
 }
 
+.cont{
+    border: solid;
+    width: 100%;
+    height: 45%;
+    position: relative;
+    top: 55%;
+    color: white;
+    background-color: white;
+    border-top-left-radius: 120px;
+    border-top-right-radius: 120px;
+}
 .login{
-    margin: 12px;
+    margin: 15px;
 }
 .pic{
     background: rgba(136, 133, 85, 0.2);

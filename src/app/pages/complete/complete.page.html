@@ -7,7 +7,11 @@
       <form [formGroup]="profileForm" (ngSubmit)="companyProf()">
         <ion-item>
           <ion-label position="floating">Full Name:</ion-label>
-          <ion-input type="text" formControlName="companyName" name="companyName"></ion-input>
+          <ion-input type="text" formControlName="Name" name="Name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">ID Number:</ion-label>
+          <ion-input type="number" formControlName="id" name="Id"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Physical Address:</ion-label>

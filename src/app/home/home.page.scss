@@ -30,10 +30,29 @@
   --width: 300px;
 }
 
-.backg{
-  --background: url(/assets/slide.jpg) no-repeat center center / cover ;
+// .backg{
+//   --background: url(/assets/slide.jpg) no-repeat center center / cover ;
+// }
+.owner{
+  position: absolute;
+  width: 49%;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  color: #F15156;
+  background-color: #F15156;
 }
-
+h1{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.cust{
+  position: absolute;
+  left: 51%;
+  width: 49%;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  color: #F15156;
+  background-color: #F15156;
+}
 ion-label{
   text-align: center;
   color: white;
@@ -47,5 +66,5 @@ ion-content{
   margin-top: 50%;
 }
 .imag{
-  margin-top: 300px;
+  position: relative;
 }

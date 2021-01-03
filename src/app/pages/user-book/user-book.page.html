@@ -1,26 +1,26 @@
 <ion-content>
   <ion-icon (click)="prev()" size="large" name="chevron-back-outline"></ion-icon>
-  <div class="book">
+  <form class="book" [formGroup]="reservation" (ngSubmit)="bookReservation()">
     <h4 align="center">Reserve a table</h4>
 
     <ion-item>
-      <ion-input type="text" placeholder="Enter Name(s)" [(ngModel)]="reserve.name" required></ion-input>
+      <ion-input type="text" placeholder="Enter Name(s)" formControlName="name" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" placeholder="Number of people" [(ngModel)]="reserve.people" required></ion-input>
+      <ion-input type="number" placeholder="Number of people" formControlName="people" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime value="2020-12-19" placeholder="Select Date" [(ngModel)]="reserve.date" required></ion-datetime>
+      <ion-datetime value="2021-12-19" placeholder="Select Date" formControlName="date" required></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Time</ion-label>
-      <ion-datetime [(ngModel)]="reserve.time" display-format="h:mm A" picker-format="h:mm A" value="2020-12-19T07:43Z" required></ion-datetime>
+      <ion-datetime formControlName="time" display-format="h:mm A" picker-format="h:mm A" value="2022-12-19T07:43Z" required></ion-datetime>
     </ion-item>
     <ion-item lines="none">
-      <ion-button fill="outline" (click)="book()">BOOK</ion-button>
+      <ion-button fill="outline" (click)="bookReservation()">BOOK</ion-button>
     </ion-item>
 
-  </div>
+  </form>
 
 </ion-content>

@@ -1,20 +1,30 @@
 
 <ion-content>
 
+    <!--  -->
+
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide >
         <h1>Welcome to The EATERY</h1>
+
       </ion-slide>
       <ion-slide>
         <h1>We have variety of restuarants you can book a table from.</h1>
+        
       </ion-slide>
       <ion-slide>
-        <h1>Enjoy..... Go </h1>
-       
+        <h1>Enjoy..... </h1>
+
           <ion-icon (click)="home()" size="large" color="light" name="home-outline"></ion-icon>
         
-        
       </ion-slide>
+      
     </ion-slides>
 
+    <!-- <ion-button  item-right style="border-radius: 40px; margin-left: 70%;"  class="tour-button"  (click)="next()">
+      <div class="parent"> Skip </div>
+    </ion-button> -->
+    <ion-button style="margin-left: 70%;" color="light" fill="outline" (click)="home()">Skip
+      <ion-icon slot="end"  name="chevron-forward-outline"></ion-icon>
+    </ion-button>
 </ion-content>

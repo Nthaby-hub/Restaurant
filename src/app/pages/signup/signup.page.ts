@@ -32,17 +32,6 @@ export class SignupPage implements OnInit {
     this.addOwner();
   }
 
-  // register(email,password){
-  //   if(this.validateForm(this.email,this.password)){
-  //     this.authService.registerUser(email, password)      
-  //     .then((res) => {
-  //       window.alert('registered')
-  //       this.route.navigateByUrl('a-login')
-  //     }).catch((error) => {
-  //       window.alert(error.message)
-  //     })
-  //   }
-  // }
 
   addOwner() {
     this.eventOwnerForm = this.fb.group({

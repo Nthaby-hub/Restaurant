@@ -26,10 +26,16 @@
 </ion-header>-->
 
 <ion-content [fullscreen]="true" class="backg">
-
+  <h1>The EATERY</h1>
+  <img src="assets/food.png" height="250px">
+  <p>Login as a Restaurant owner or a Customer</p>
   <div class="imag">
-    <img src="assets/owner.png" width="150px" (click)="ownerLogin()">
-    <img src="assets/cust.png" width="150px" (click)="customer()">
+    <div class="owner" (click)="ownerLogin()">
+      <img src="assets/owner.png" width="150px" (click)="ownerLogin()">
+    </div>
+    <div class="cust" (click)="customer()">
+      <img src="assets/cust.png" width="150px" (click)="customer()">
+    </div>
   </div>
   <!-- <img src="assets/logo.png"> -->
 

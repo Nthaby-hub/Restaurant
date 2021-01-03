@@ -22,7 +22,7 @@ export class CompletePage implements OnInit {
 
   constructor( private product: ProductsService, private modalCtrl: ModalController,
     private fb: FormBuilder, private rout: Router) { 
-      this.company = localStorage.getItem('companyName')
+      this.company = localStorage.getItem('Name')
     }
 
   ngOnInit() {
@@ -32,7 +32,8 @@ export class CompletePage implements OnInit {
   saveProfile() {
     this.profileForm = this.fb.group({
       clientCode: ['', Validators.required],
-      companyName: ['', Validators.required],
+      Name: ['', Validators.required],
+      id: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.0]+.[a-zA-Z]{2,4}$')]],
@@ -40,8 +41,12 @@ export class CompletePage implements OnInit {
     });
   }
 
-  get companyName() {
-    return this.profileForm.get("companyName");
+  get Name() {
+    return this.profileForm.get("Name");
+  }
+
+  get id() {
+    return this.profileForm.get("id");
   }
 
   get address() {
@@ -65,7 +70,8 @@ export class CompletePage implements OnInit {
 
     firebase.firestore().collection('UserProfile').doc(this.userId).set({
       // eventOwnerId: this.eventOwnerId,
-      companyName: this.profileForm.value.companyName,
+      Name: this.profileForm.value.Name,
+      id: this.profileForm.value.id,
       address: this.profileForm.value.address,
       phone: this.profileForm.value.phone,
       email: this.profileForm.value.email

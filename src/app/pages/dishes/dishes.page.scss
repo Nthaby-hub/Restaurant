@@ -1,7 +1,7 @@
-.image{
-    margin: 10px;
-    padding-top: 10px;
-}
+// .image{
+//     margin: 10px;
+//     padding-top: 10px;
+// }
 .evt{
     margin: 40px;
 }
@@ -10,9 +10,21 @@ ion-card{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 12px;
+    align-items: center;
 }
-
+img{
+   border-radius: 12px; 
+}
 
 ion-item{
     border-radius: 10px;
+}
+
+.info{
+    height: 100%;
+    width: 90%;
+    //border: solid;
+    position: relative;
+    top: 5px;
 }

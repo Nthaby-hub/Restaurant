@@ -1,36 +1,50 @@
 <ion-content>
+
   <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
 
   <div class="pic">
     <img src="assets/logo.png">
   </div>
+
+  <form [formGroup]="eventLoginForm">
   
-<div class="login">
+    <ion-item class="rowStyle">
+      <ion-icon name="person"></ion-icon>
+      <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="rowStyle">
+      <ion-icon name="lock-closed"></ion-icon>
+      <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="signinUser()">
+      Sign In
+    </ion-button>
+
+  </form>
+
+  
+  <ion-item lines="none">
+    <ion-label align="end" color="primary" (click)="register()">Create Account</ion-label>
+  </ion-item>
+
+ <!-- </div>
+  
+ <div class="login">
   <h1 align="center">Sign In</h1>
   <ion-item>
-    <!-- <ion-label position="floating">Email</ion-label> -->
     <ion-input placeholder="Email" [(ngModel)]="email"></ion-input>
   </ion-item>
   <ion-item>
-    <!-- <ion-label position="floating">Password</ion-label> -->
     <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
   <ion-button expand="block" (click)="login()">Sign-In</ion-button>
 
   <ion-item lines="none">
     <ion-label align="end" color="primary" (click)="register()">Create Account</ion-label>
-  </ion-item>
-  <!-- <ion-item-divider lines="none">
-    <ion-list>
-      Or SIgn-In using...
-    </ion-list>
-  </ion-item-divider>
-  <ion-item-divider lines="none">
-    <ion-list align="center">
-      <ion-icon size="large" color="primary" name="logo-google"></ion-icon>
-    </ion-list>
-  </ion-item-divider> -->
-</div>
+  </ion-item> -->
+<!-- </div> -->
   
 
 </ion-content>
