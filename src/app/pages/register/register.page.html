@@ -3,31 +3,35 @@
 <ion-content>
   <div class="register">
     
-    <form [formGroup]="eventOwnerForm" (ngSubmit)="register()">
+      <h1>Create Account,</h1>
+      <h5 style="color: gray;">Sign Up to get started!</h5>
 
-      <h1 align="center">Sign Up</h1>
-    <ion-item>
+    <form class="registerForm" [formGroup]="eventOwnerForm" (ngSubmit)="register()">
+
+    <ion-item class="rowStyle">
       <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
     </ion-item> 
-    <ion-item>
+    <br>
+    <ion-item class="rowStyle">
       <ion-input type="email" name="email" formControlName="email" placeholder="Email Address"></ion-input>
     </ion-item>
-    <ion-item>
+    <br>
+    <ion-item class="rowStyle">
       <ion-input type="password" name="password" formControlName="password" placeholder="Password"></ion-input>
     </ion-item>
+    <br>
     <!-- <ion-item lines="none">
       <ion-input type="password" placeholder="re-Enter Password" [(ngModel)]="rePassword"></ion-input>
     </ion-item> -->
       <ion-button expand="block" (click)="register()">sign up</ion-button>
 
-      <ion-item lines="none">
-        <ion-label align="end" color="primary" (click)="login()">Sign In</ion-label>
+      <ion-item class="signin" lines="none">
+        <p>I already have an account.</p>
+        <p (click)="login()" style="color: #46237a;">Sign In</p>
       </ion-item>
 
     </form>
     
   </div>
-  <div class="pic">
-    <img src="assets/logo.png">
-  </div>
+  
 </ion-content>

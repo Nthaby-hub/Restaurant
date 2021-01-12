@@ -1,34 +1,38 @@
 <ion-content>
 
   <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
+  <div class="login">
+    <h1>Welcome,</h1>
+    <h5 style="color: gray;">Sign In to continue.</h5>
 
-  <div class="pic">
-    <img src="assets/logo.png">
+    <div class="loginForm">
+      <form [formGroup]="eventLoginForm">
+      
+        <ion-item class="rowStyle">
+          <ion-icon name="person"></ion-icon>
+          <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="rowStyle">
+          <ion-icon name="lock-closed"></ion-icon>
+          <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button expand="block" (click)="signinUser()">
+          Sign-In
+        </ion-button>
+        <ion-item lines="none">
+          <ion-label align="end"><i>forgot password?</i></ion-label>
+        </ion-item>
+
+      </form>
+    
+      <ion-item class="signup" lines="none">
+        <p style="color: gray;">I'm a new user.</p>
+        <p style="color: #46237a;" (click)="register()">Sign Up</p>
+      </ion-item>
+    </div>
   </div>
-
-  <form [formGroup]="eventLoginForm">
-  
-    <ion-item class="rowStyle">
-      <ion-icon name="person"></ion-icon>
-      <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
-    </ion-item>
-
-    <ion-item class="rowStyle">
-      <ion-icon name="lock-closed"></ion-icon>
-      <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" (click)="signinUser()">
-      Sign In
-    </ion-button>
-
-  </form>
-
-  
-  <ion-item lines="none">
-    <ion-label align="end" color="primary" (click)="register()">Create Account</ion-label>
-  </ion-item>
-
  <!-- </div>
   
  <div class="login">

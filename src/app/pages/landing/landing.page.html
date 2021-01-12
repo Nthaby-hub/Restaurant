@@ -1,21 +1,22 @@
 <ion-header>
   <ion-toolbar>
+  <h3 align="center"  style="color: rgba(83, 32, 65, 0.7);">Restaurants</h3>
     <ion-icon (click)="openPro()" slot="end"  size="large" name="person-outline"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-
-  <h3 align="center"  style="color: rgba(83, 32, 65, 0.7);">Restaurants</h3>
+  <h3>Most Popular</h3>
 
   <ion-card *ngFor="let rest of items" (click)="open()">
-    <img src="">
+    <img src="assets/fish.jpg" height="150px">
     <ion-card-header>
       <ion-card-title align="center" style="color: rgba(218, 131, 187, 0.7);">{{rest.companyName}}</ion-card-title>
-      <ion-icon size="large" style="color: rgba(114, 50, 91, 0.7);" name="pizza-outline"></ion-icon>
-      <ion-icon size="large" style="color: rgba(114, 50, 91, 0.7);" name="beer-outline"></ion-icon>
+      <ion-label align="center">Come have a good time with us...</ion-label>
     </ion-card-header>
   </ion-card>
- 
+
+  <h3>Nearby</h3>
+
 </ion-content>

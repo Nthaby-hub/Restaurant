@@ -1,74 +1,44 @@
 
 <ion-content>
-  <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
-
+  <div class="" style="
+  background: #F7ACCF;">
+    <ion-icon (click)="prev()" color="light" name="chevron-back-outline" size="large"></ion-icon>
+  </div>
+<div class="cont">
   <div class="register">
-    <h1 align="center">Sign Up</h1>
-
+    <h1 color="light" align="center">Sign Up</h1>
+    <br><br>
       <form [formGroup]="eventOwnerForm" (ngSubmit)="registerOwner()">
 
         <ion-item class="rowStyle">
           <ion-icon name="person"></ion-icon>
           <ion-input placeholder="Username" formControlName="username" type="text" name="username"></ion-input>
         </ion-item>
-        
+        <br>
 
         <ion-item class="rowStyle">
           <ion-icon name="mail"></ion-icon>
           <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
         </ion-item>
-        
+        <br>
 
         <ion-item class="rowStyle">
           <ion-icon name="lock-closed"></ion-icon>
           <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
         </ion-item>
-        
+        <br>
 
-        <ion-button expand="block" (click)="registerOwner()">
+        <ion-button style="--background: #56237a " expand="block" (click)="registerOwner()">
           Sign Up
         </ion-button>
-<!-- 
-        <ion-button expand=block fill="clear" color="light" routerLink='/a-login' routerLinkActive="router-link-active" 
-          style="text-transform: capitalize; font-size: 10px; margin-top: -20px; align-items: flex-start;padding-right: 0px;">
-          Already have an account? Sign in
-        </ion-button> -->
 
       </form>
-      <ion-item lines="none">
-        <ion-label align="end" color="primary" (click)="login()">Sign In</ion-label>
-      </ion-item>
 
   </div>
-
-  <!--<div class="register">
-    <h1 align="center">Sign Up</h1>
-     <ion-item>
-      <ion-input type="text" placeholder="Full Name(s)" [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Identity Number" [(ngModel)]="id"></ion-input>
-    </ion-item> 
-    <ion-item>
-      <ion-input type="email" placeholder="Email Address" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Contact Number" [(ngModel)]="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-input type="password" placeholder="re-Enter Password" [(ngModel)]="rePassword"></ion-input>
-    </ion-item> 
-      <ion-button expand="block" (click)="register(email,password)">Sign-Up</ion-button>
+</div>
 
       <ion-item lines="none">
-        <ion-label align="end" color="primary" (click)="login()">Sign In</ion-label>
+        <ion-label style="color: #56237a;" align="center" color="primary" (click)="login()">Sign-In</ion-label>
       </ion-item>
-  </div>-->
-  <div class="pic">
-    <img src="assets/logo.png">
-  </div>
-
+      <h1 style="font-size: xx-large; font-weight: 700; color: #56237a; position: relative; " align="center">The EATERY</h1>
 </ion-content>

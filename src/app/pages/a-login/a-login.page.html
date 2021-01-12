@@ -1,34 +1,35 @@
-<div style="color: salmon;">
-<ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
+<div style="background-color: #F7ACCF;">
+<ion-icon color="light" (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
 </div>
-<ion-content>
+<ion-content style="--background: #F7ACCF;">
+     <h1 style="font-size: xx-large; font-weight: 700; color: #56237a; position: relative; top: 20%;" align="center">The EATERY</h1>
+    <ion-item lines="none" style="--background: #F7ACCF; top: 30%;">
+      <ion-label align="end" style="position: relative; right: 40%;" color="light" (click)="register()">Sign-Up</ion-label>
+    </ion-item>
 
   <div class="cont">
     <div class="login">
-    <h1 align="center">Sign In</h1>
-
+    <h1 class="sign" align="center">Sign In</h1>
+      <br>
     <form [formGroup]="eventLoginForm" (ngSubmit)="signinOwner()">
     
       <ion-item class="rowStyle">
         <ion-icon name="person"></ion-icon>
         <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
       </ion-item>
-
+      <br>
       <ion-item class="rowStyle">
         <ion-icon name="lock-closed"></ion-icon>
         <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
       </ion-item>
-
-      <ion-button expand="block" (click)="signinOwner()">
+      <br>
+      <ion-button expand="block" style="--background: #56237a;" (click)="signinOwner()">
         Sign In
       </ion-button>
 
     </form>
 
     
-    <ion-item lines="none">
-      <ion-label align="end" color="primary" (click)="register()">Create Account</ion-label>
-    </ion-item>
 
     </div>
   </div>

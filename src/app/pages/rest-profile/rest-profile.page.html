@@ -1,20 +1,42 @@
 
 <ion-content>
-  <ion-icon (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
-  <!-- <ion-fab (click)="addProfile()" vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-  
-  <h3 align="center">Profile</h3>
 
-  <ion-avatar>
-    
-  </ion-avatar>
-  
+  <div class="top">
+    <ion-icon color="light" (click)="prev()" name="chevron-back-outline" size="large"></ion-icon>
+
+    <h3 align="center" style="color: #ff476c;">Profile</h3>
+  </div>
+  <div class="bottom">
+    <div class="card" *ngFor="let p of items">
+      <ion-icon size="large" style="position: relative; left: 45%;" name="create-outline"></ion-icon>
+      <ion-avatar style="width: 150px; height: 150px; position: relative; bottom: 30%;">
+        <img src="assets/food.png">
+        <!-- <ion-icon size="large" name="camera-outline"></ion-icon> -->
+      </ion-avatar>
+      
+      <ion-label style=" position: relative; bottom: 30%;"><b>{{p.companyName}}</b></ion-label>
+      <ion-label style=" position: relative; bottom: 30%;">{{p.email}}</ion-label>
+
+    </div>
+    <div class="stats">
+      <ion-item>
+        <ion-label>Stats</ion-label>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label>Stats</ion-label>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+      <ion-item style="border-bottom-left-radius: 10px;
+                      border-bottom-right-radius: 10px;">
+        <ion-label>Stats</ion-label>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </div>
+  </div>
+
   <div class="profil" *ngFor="let p of items">
-    <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
+    <ion-item class="name" lines="none" style="--background: rgba(253, 233, 246, 0.7);">
       <ion-label>
         Restaurant Name: {{p.companyName}}
       </ion-label>
@@ -29,7 +51,7 @@
         Contact Number: {{p.phone}}
       </ion-label>
     </ion-item>
-    <ion-item lines="none" style="--background: rgba(253, 233, 246, 0.7);">
+    <ion-item c lines="none" style="--background: rgba(253, 233, 246, 0.7);">
       Website: <ion-router-link>
          {{p.website}}
       </ion-router-link>

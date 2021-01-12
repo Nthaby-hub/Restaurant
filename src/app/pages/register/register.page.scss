@@ -1,8 +1,34 @@
+ion-content{
+    width: 100%;
+    height: 95%;
+    // border: solid;
+}
 .register{
     margin: 12px;
+    // border: solid;
+    height: 93%;
 }
-
+.registerForm{
+    // border: solid;
+    position: relative;
+    top: 13%;
+    height: 70%;
+}
 .pic{
     background: rgba(136, 133, 85, 0.2);
     border-radius: 28px 28px 0 0;
+}
+.rowStyle{
+    border: solid #f7accf;
+    border-radius: 8px;
+}
+ion-button{
+    --background: linear-gradient(to right,#ff476c, #46237a)
+}
+.signin{
+    position: relative;
+    top: 30%;
+    left: 12%;
+    // border: solid;
+    width: 75%;
 }
