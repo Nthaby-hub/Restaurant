@@ -1,26 +1,54 @@
 <ion-content>
   <ion-icon (click)="prev()" size="large" name="chevron-back-outline"></ion-icon>
-  <form class="book" [formGroup]="reservation" (ngSubmit)="bookReservation()">
-    <h4 align="center">Reserve a table</h4>
+  <div class="cont">
+    <form class="book" [formGroup]="reservation" (ngSubmit)="bookReservation()">
+      <h4 align="center">Reserve A Table</h4>
 
-    <ion-item>
-      <ion-input type="text" placeholder="Enter Name(s)" formControlName="name" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Number of people" formControlName="people" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime value="2021-12-19" placeholder="Select Date" formControlName="date" required></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Time</ion-label>
-      <ion-datetime formControlName="time" display-format="h:mm A" picker-format="h:mm A" value="2022-12-19T07:43Z" required></ion-datetime>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-button fill="outline" (click)="bookReservation()">BOOK</ion-button>
-    </ion-item>
-
-  </form>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Enter Name(s)" formControlName="name" required></ion-input>
+      </ion-item>
+      <br>
+      <ion-item lines="none">
+        <!-- <ion-input type="number" placeholder="Number of people" required></ion-input> -->
+        <ion-label style="color: gray;">Number of People</ion-label>
+        <ion-select value="1" okText="Okay" cancelText="Dismiss" formControlName="people">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <br>
+      <ion-list>
+        <ion-item-divider lines="none">
+          <ion-checkbox (click)="toggleDisplay()"></ion-checkbox><ion-label>&nbsp; Children under 3 years</ion-label>
+        </ion-item-divider>
+        <ion-item lines="none" [hidden] = "isDisplay">
+          <ion-label style="color: gray;">Number of Children</ion-label>
+          <ion-select value="0" okText="Okay" cancelText="Dismiss" formControlName="child">
+            <ion-select-option value="0">0</ion-select-option>
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      
+      <br>
+      <ion-item lines="none">
+        <ion-label style="color: gray;">Date</ion-label>
+        <ion-datetime value="2021-12-19" placeholder="Choose Date" formControlName="date" required></ion-datetime>
+      </ion-item>
+      <br>
+      <ion-item lines="none">
+        <ion-label style="color: gray;">Time</ion-label>
+        <ion-datetime formControlName="time" placeholder="Choose Time" display-format="h:mm A" picker-format="h:mm A" value="2022-12-19T07:43Z" required></ion-datetime>
+      </ion-item>
+      <br>
+        <ion-button expand="block" color="primary" (click)="bookReservation()">BOOK</ion-button>
+      
+    </form>
+  </div>
 
 </ion-content>

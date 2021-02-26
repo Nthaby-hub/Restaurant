@@ -39,7 +39,7 @@ export class UserBookPage implements OnInit {
       people: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
-      
+      child: ['']
     });
   }
 
@@ -62,6 +62,7 @@ export class UserBookPage implements OnInit {
               people: this.reservation.value.people,
               date: this.reservation.value.date,
               time: this.reservation.value.time,
+              child: this.reservation.value.child,
               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             }).then((doc) => {
               doc.set({ bookId: doc.id }, { merge: true }).then(() => {
@@ -97,6 +98,16 @@ export class UserBookPage implements OnInit {
 
   prev(){
     this.location.back()
+  }
+
+  isDisplay = true;
+  toggleDisplay() {
+    if(this.isDisplay == true){
+      this.isDisplay = false;
+    }else{
+      this.isDisplay = true;
+    }
+    
   }
 
 }

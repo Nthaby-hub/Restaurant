@@ -3,12 +3,21 @@
 <ion-content>
 <ion-icon (click)="prev()" size="large" name="chevron-back-outline"></ion-icon>
 
-  <div class="profil" *ngFor="let p of user">
+  <div class="profil">
     
     <div class="bottom">
       <div class="items">
         <ion-item>
-          <ion-label>My Reservations</ion-label>
+          <ion-label>My Account</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label (click)="openR()">My Reservations</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label (click)="logout()">Logout</ion-label>
+          <ion-icon name="log-out-outline"></ion-icon>
         </ion-item>
       </div>
     </div><div class="top">
@@ -17,15 +26,15 @@
       </ion-avatar>
     
       <ion-label class="name" style="font-size: large;">
-        <b>{{p.Name}}</b> 
+        <b>{{userProfile?.Name}}</b> 
       </ion-label>
       <br>
       <ion-label class="name" style="color: gray;">
-         {{p.email}}
+         {{userProfile?.email}}
       </ion-label>
       <br>
       <ion-label class="name" style="color: gray;">
-         0{{p.phone}}
+         0{{userProfile?.phone}}
       </ion-label>
     </div>
 

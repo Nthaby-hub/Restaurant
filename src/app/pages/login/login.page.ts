@@ -62,22 +62,24 @@ export class LoginPage implements OnInit {
 
   async signinUser() {
 
+    this.authService.signAuth();
+
    // const loading = await this.loadingCtrl.create();
 
     console.log(this.eventLoginForm.value)
     this.isSubmitted = true;
     // Logging in the current owner/user  
     this.authService.signinRestOwner(this.eventLoginForm.value.email, this.eventLoginForm.value.password).then((res) => {
-      console.log('logged in: ', res)
+      console.log('logged in: ', res.user)
 
       // Getting logged in owner
       let user = firebase.auth().currentUser.uid
       console.log('user: ', user)
       // Fetching the event owners to get their username when logged in
-      firebase.firestore().collection('eventUser').doc(user).get().then(async (snap) => {
-        this.owners = snap.data();
-        this.username = snap.get('username');
-        this.role = snap.get('role')
+      firebase.firestore().collection('eventUser').doc(user).get().then(async (snapshot) => {
+        this.owners = snapshot.data();
+        this.username = snapshot.get('username');
+        this.role = snapshot.get('role')
 
         // const toast = await this.toastCtrl.create({
         //   message: "Welcome " + this.username,
@@ -120,39 +122,6 @@ export class LoginPage implements OnInit {
     );
     //return await loading.present();
   }
-
-  // clearErrorMessage(){
-  //   this.errorMessage = "";
-  //   this.error = { name: '', message: ''};
-  // }
-
-  // login(){
-  //   this.clearErrorMessage();
-
-  //   if(this.validateForm(this.email,this.password)){
-  //     this.auth.loginEmail(this.email, this.password)
-  //   .then(() => {
-  //     this.router.navigateByUrl('complete')
-  //   }).catch(_error => {
-  //     this.error = _error
-  //     this.router.navigateByUrl('login')
-  //   })
-  //   }
-  // }
-
-  // validateForm(email, password){
-  //   if(email.length === 0){
-  //     alert("Please Enter Email Address");
-  //     return false;
-  //   }
-  //   if(password.length === 0){
-  //     alert("Please Enter Password");
-  //     return false;
-  //   }
-
-  //   this.errorMessage = "";
-  //   return true;
-  // }
 
   register(){
     this.rout.navigateByUrl('register')

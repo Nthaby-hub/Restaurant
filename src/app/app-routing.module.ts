@@ -66,7 +66,8 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  },  {
+  },
+  {
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'complete',
     loadChildren: () => import('./pages/complete/complete.module').then( m => m.CompletePageModule)
+  },
+  {
+    path: 'edit-rest/:id',
+    loadChildren: () => import('./pages/edit-rest/edit-rest.module').then( m => m.EditRestPageModule)
   },
 
 

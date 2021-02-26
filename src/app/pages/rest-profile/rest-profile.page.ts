@@ -4,6 +4,12 @@ import { ProductsService } from 'src/app/services/products.service'
 import { ModalController } from '@ionic/angular'
 import { ProfilePage } from '../profile/profile.page'
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-rest-profile',
   templateUrl: './rest-profile.page.html',
@@ -11,106 +17,52 @@ import { ProfilePage } from '../profile/profile.page'
 })
 export class RestProfilePage implements OnInit {
 
-  items: any;
+  userM: any;
+  profiles: Array<any> = [];
+  userId: string;
+  userProfile: firebase.firestore.DocumentData;
 
-  Items: any;
-  title = 'khumalo3';
-  images: any =[];
-  allfiles: any =[];
-
-  constructor(private product: ProductsService, private location: Location, private modalCtrl: ModalController) { }
+  constructor(private product: ProductsService, private router: Router, private location: Location,
+     private modalCtrl: ModalController, private authService: AuthService) { }
 
   ngOnInit() {
-    this.product.getProfile().subscribe(data_I => {
-      this.items = [];
-      data_I.forEach( a => {
-        let data: any = a.payload.doc.data();
-        data.id = a.payload.doc.id;
-        this.items.push(data);
-      })
-    })
-  }
 
-  insertFile(event){
-    this.product.uploadFile(event)
-  }
-
-  async addProfile(){
-    const modal = await this.modalCtrl.create({
-      component: ProfilePage,
-      cssClass: ''
-    });
-    return await modal.present();
-  }
-  //banele
-  fileuploads(event)
-    {
-        const files = event.target.files;
-        console.log(files);
-        if(files)
-        {
-          for (let i = 0; i <  files.length; i++){
-            const image={
-              name : '',
-              type : '',
-              size : '',
-              url : ''
-            };
-            this.allfiles.push(files[i]);
-            image.name = files[i].name;
-            image.type = files[i].type;
-            const size = files[i].size / 1000;
-            const mbc = size + '';
-            const mb = mbc.split('.')[0];
-            const length = mb.length;
-              if(length === 4 || length === 5)
-              {
-                const mbsize = size /1000;
-                const splitdata = mbsize + '';
-                const splitvalues = splitdata.split('.');
-                let secondaryvariable ='';
-                for(let j=0; j < splitvalues.length;j++)
-                {
-                  if(j===1)
-                  {
-                    secondaryvariable = splitvalues[j].slice(0,2);
-                  }
-                }
-                image.size = splitvalues[0] + '.' + secondaryvariable + 'MB'
-              }else{
-                const splitdata = size + '';
-                const splitvalues = splitdata.split('.');
-                let secondaryvariable ='';
-                for(let j=0; j < splitvalues.length;j++)
-                {
-                  if(j===1)
-                  {
-                    secondaryvariable = splitvalues[j].slice(0,2);
-                  }
-                }
-                image.size = splitvalues[0] + '.' + secondaryvariable + 'KB'
-              }
-            const reader = new FileReader();
-            reader.onload = (filedata)=>{
-              image.url = reader.result + '';
-              this.images.push(image);
-            };
-            reader.readAsDataURL(files[i]);
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (user) {
+        console.log('User - logged in')
+        this.userM = this.authService.getSession()
+        this.userM = user.uid
+        console.log('login USER: ', this.userM)
+        console.log()
+      
+            firebase.firestore().collection('restProfile').where('eventOwnerId', '==', this.userM).onSnapshot(res => {
+              res.forEach(element => {
+                this.profiles.push(Object.assign(element.data(), { uid: element.id }));
+                console.log('PROFILES: ', this.profiles);
+                this.userId = { uid: element.id }.uid
+                // this.going = element.data().going.length
+                console.log('userID: ', this.userId)
+    
+                firebase.firestore().collection('restProfile').doc(this.userId).get().then((res) => {
+                  this.userProfile = res.data();
+                  console.log('my - profile: ', this.userProfile)
+                });
+              });
+            });
           }
-        }
-          event.srcElement.value = null;
-    }
-    deleteImage(image: any)
-    {
-      const index = this.images.indexOf(image);
-      this.images.splice(index, 1);
-      this.allfiles.splice(index, 1);
-    }
-    save()
-    {
-      console.log(this.allfiles);
-    }
+        })
+  }
 
+  editProfile(){
+    this.router.navigate(['/edit-rest', this.userId])
+  }
+
+  logout() {
+    this.authService.logoutRestOwner();
+    this.authService.signAuth();
+    this.router.navigateByUrl('home')
+  }
+ 
     prev(){
       this.location.back()
     }

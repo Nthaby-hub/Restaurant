@@ -8,9 +8,16 @@
 
 <ion-content>
 
- <ion-list *ngFor="let d of date">
-   <ion-item>
-     <ion-label>Table for {{d.people}} </ion-label> <br> Date: {{d.date | date: 'dd-MM-yyyy'}}<br>Time {{d.time | date: 'h:mm'}} </ion-item>
- </ion-list>
+ <ion-card *ngFor="let d of date">
+    <ion-item>
+      <ion-icon name="people-outline" color="primary"></ion-icon>
+     <ion-label>&nbsp; Table for {{d.people}} </ion-label> <ion-label> {{d.child}} Child(s) </ion-label>
+     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="time-outline" color="primary"></ion-icon>
+      <ion-label> &nbsp; Date: {{d.date | date: 'dd-MM-yyyy'}}</ion-label> <ion-label>Time {{d.time | date: 'h:mm'}}</ion-label>
+    </ion-item>
+ </ion-card>
 
 </ion-content>

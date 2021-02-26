@@ -1,0 +1,35 @@
+<ion-icon size="large" (click)="dismissModal()" name="close-outline"></ion-icon>
+<ion-content>
+
+  <div class="cont">
+
+    <form [formGroup]="eventForm">
+      <h3 style="font-weight: bold;" align="center">Add A Dish</h3>
+    <ion-item  style="--background: rgba(253, 233, 246, 0.7);">
+      <ion-label>Dish Name</ion-label>
+      <ion-input placeholder="Dish Name" formControlName="dishName"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item  style="--background: rgba(253, 233, 246, 0.7);">
+      <ion-label>Price</ion-label>
+      <ion-input type="number" placeholder="Price" formControlName="price"></ion-input>
+    </ion-item>
+    <br>
+      <ion-label>Dish Image</ion-label>
+        <ion-input type="file" formControlName="imgUrl" accept="image/*" (change)="onFileSelected($event)"></ion-input>
+    <br>
+
+    <ion-item  style="--background: rgba(253, 233, 246, 0.7);">
+      <ion-label>Description</ion-label>
+      <textarea formControlName="description"></textarea>
+    </ion-item>
+
+    <br>
+    <ion-button horizontal="center" style="--background: rgba(247, 155, 214, 0.7);" (click)="dishSubmit()"
+        [disabled]="!eventForm.valid" type="submit">
+        ADD
+      </ion-button> 
+
+   </form>
+ </div>
+</ion-content>

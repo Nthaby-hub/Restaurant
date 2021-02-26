@@ -7,32 +7,37 @@
 
 <ion-content>
 
-  <ion-list style="--background: pink" *ngFor="let i of items">
-    <ion-item-sliding>
-      <ion-item style="--background: pink">
-        <ion-label>
-          {{i.people}} People
-        </ion-label>
-        <ion-label>
-          {{i.name}}
-        </ion-label>
-        <ion-label>
-          <!-- {{i.date.seconds * 1000 | date:'yyyy-MM-dd h:mm a'}} -->
-          {{i.date  | date: 'dd-MM-yyyy' }}
-        </ion-label>
-        <ion-label>
-          {{i.time| date: 'h:mm'}}
-        </ion-label> 
+  <ion-card *ngFor="let i of items">
+    <ion-item>
+      <ion-icon name="people" slot="start"></ion-icon>
+      <ion-label>{{i.name}}</ion-label>
+      
+    </ion-item>
+  
+    <ion-card-content>
+
+      <ion-fab size="small" horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button style="--background: pink;"  (click)="deleteFood(i.id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-fab-button>
+
+        <!-- <ion-fab-list side="start">
+
+          <ion-fab-button color="light" (click)="deleteFood(i.id)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list> -->
+      </ion-fab>
+
+      <ion-item>
+        <ion-label>{{i.people}} Person(s)</ion-label>
+        <ion-label> {{i.child}} Child(s)</ion-label>
       </ion-item>
-      <ion-item-options>
-        <ion-item-option color="success">
-          Confirm
-        </ion-item-option>
-        <ion-item-option color="danger">
-          Decline
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+
+      <ion-label> <b>Date: </b>{{i.date  | date: 'dd/MM/yyyy' }}</ion-label>
+      <br><br>
+      <ion-label><b>Time: </b>{{i.time| date: 'h:mm'}}</ion-label>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

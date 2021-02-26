@@ -12,24 +12,15 @@ import 'firebase/auth'
 })
 export class AuthService {
   authState: any;
+  userUID: any;
 
-  constructor(private afa: AngularFireAuth, private afStore: AngularFirestore, private router: Router) {
-    this.afa.authState.subscribe(user => {
-      if (user) {
-        this.authState = user;
-        localStorage.setItem('user', JSON.stringify(this.authState));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    })
-   }
+  constructor() {}
 
    signAuth(){
     return firebase.auth().onAuthStateChanged(user => {
       if(user){
-        console.log('User logged in: ', user);
+        this.setSession(user.uid)
+        console.log('User logged in: ', this.getSession());
       }else{
         console.log('User logged out:');
       }
@@ -56,19 +47,13 @@ export class AuthService {
     return firebase.auth().signOut();
   }
 
-   loginEmail(email,password){
-    return this.afa.signInWithEmailAndPassword(email,password)
-   }
-
-  //  GoogleAuth() {
-  //   return this.AuthLogin(new GoogleAuthProvider());
-  // }
-
-  registerUser(email, password){
-    return this.afa.createUserWithEmailAndPassword(email,password)
+  setSession(x){
+    this.userUID = x;
   }
 
-  
+  getSession(){
+    return this.userUID
+  }  
   // Auth providers
   // AuthLogin(provider) {
   //   return this.afa.auth.signInWithPopup(provider)

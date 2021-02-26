@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: DishesPage
+  },  {
+    path: 'add-dish',
+    loadChildren: () => import('./add-dish/add-dish.module').then( m => m.AddDishPageModule)
   }
+
 ];
 
 @NgModule({
