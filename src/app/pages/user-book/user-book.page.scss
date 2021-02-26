@@ -1,14 +1,28 @@
 .book{
-    margin: 50px;
+    margin: 10%;
 }
-
+.cont{
+    
+    height: 95%;
+    width: 100%;
+    // border: solid;
+}
 .menu{
     border-radius: 2px;
     border-color: royalblue;
     border-width: 1;
 }
 ion-item{
+<<<<<<< HEAD
     // border-color: yellow;
     border-bottom: solid;
     border-bottom-color: yellow;
+=======
+    // border: solid;
+    border-radius: 12px;
+    --background: rgb(241, 241, 241);
+}
+ion-button{
+    color: linear-gradient(#ff476c, #46237a); 
+>>>>>>> f341f54afcfac9c736f4483fb49dc5330024f85d
 }

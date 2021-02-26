@@ -65,20 +65,22 @@ export class ALoginPage implements OnInit {
 
    // const loading = await this.loadingCtrl.create();
 
+   this.authService.signAuth();
+
     console.log(this.eventLoginForm.value)
-    this.isSubmitted = true;
+    
     // Logging in the current owner/user  
     this.authService.signinRestOwner(this.eventLoginForm.value.email, this.eventLoginForm.value.password).then((res) => {
-      console.log('logged in: ', res)
+      console.log('logged in: ', res.user)
 
       // Getting logged in owner
       let user = firebase.auth().currentUser.uid
       console.log('user: ', user)
       // Fetching the event owners to get their username when logged in
-      firebase.firestore().collection('RestaurantOwners').doc(user).get().then(async (snap) => {
-        this.owners = snap.data();
-        this.username = snap.get('username');
-        this.role = snap.get('role')
+      firebase.firestore().collection('RestaurantOwners').doc(user).get().then(async (snapshot) => {
+        this.owners = snapshot.data();
+        this.username = snapshot.get('username');
+        this.role = snapshot.get('role')
 
         // const toast = await this.toastCtrl.create({
         //   message: "Welcome " + this.username,
@@ -129,33 +131,5 @@ export class ALoginPage implements OnInit {
   register(){
     this.rout.navigateByUrl('signup')
   }
-
-
-  //old
-  // login(){
-
-  //   if(this.validateForm(this.email,this.password)){
-  //     this.auth.loginEmail(this.email, this.password)
-  //   .then(() => {
-  //     this.rout.navigateByUrl('dashboard')
-  //   }).catch(_error => {
-  //     this.error = _error
-  //     this.rout.navigateByUrl('a-login')
-  //   })
-  //   }
-  // }
-
-  // validateForm(email, password){
-  //   if(email.length === 0){
-  //     alert("Please Enter Email Address");
-  //     return false;
-  //   }
-  //   if(password.length === 0){
-  //     alert("Please Enter Password");
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
 
 }

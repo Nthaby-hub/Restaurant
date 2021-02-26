@@ -25,6 +25,10 @@ export class ReservationsPage implements OnInit {
     })
   }
 
+  deleteFood(id){
+    this.product.deleteFood(id)
+  }
+
   prev(){
     this.location.back()
   }

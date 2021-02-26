@@ -40,11 +40,6 @@ export class OpenRestaurantPage implements OnInit {
   open(){
     this.route.navigateByUrl('user-book')
   }
-
-  openR(){
-    this.route.navigateByUrl('restaurant1')
-  }
-
   
   prev(){
     this.location.back()

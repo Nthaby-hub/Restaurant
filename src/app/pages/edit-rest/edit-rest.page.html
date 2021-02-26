@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit-rest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="updateForm" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label>Company Name</ion-label>
+      <ion-input formControlName="companyName"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contact Number</ion-label>
+      <ion-input formControlName="phone"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Website</ion-label>
+      <ion-input formControlName="website"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Physical Address</ion-label>
+      <ion-input formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Image</ion-label>
+      <ion-input type="file" formControlName="imgUrl" accept="image/*" placeholder="Image"
+        (change)="onFileSelected($event)"></ion-input>
+    </ion-item>
+    <br><br><br>
+    <ion-button style="margin-top: 10%;" expand="block" (click)="save()" color="danger">Save Changes</ion-button>
+
+  </form>
+
+</ion-content>
