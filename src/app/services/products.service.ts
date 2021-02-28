@@ -51,6 +51,14 @@ export class ProductsService {
     this.afs.collection('rest1').doc(food.key).update(food) 
   }
 
+  deleteReservation(res){
+    this.afs.collection('Reservations').doc(res).delete().then(() => {
+      
+    }).catch(err => {
+      alert(err.message + ' Could not delete')
+    })
+  }
+
   //Upload file
   uploadFile(event) {
     const file = event.target.files[0];

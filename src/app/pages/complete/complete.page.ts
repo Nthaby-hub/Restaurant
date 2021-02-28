@@ -33,7 +33,7 @@ export class CompletePage implements OnInit {
     this.profileForm = this.fb.group({
       clientCode: ['', Validators.required],
       Name: ['', Validators.required],
-      id: ['', Validators.required],
+      id: ['', Validators.required, Validators.minLength(13), Validators.maxLength(13)],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.0]+.[a-zA-Z]{2,4}$')]],
@@ -69,7 +69,7 @@ export class CompletePage implements OnInit {
     this.userId = user.uid;
 
     firebase.firestore().collection('UserProfile').doc(this.userId).set({
-      // eventOwnerId: this.eventOwnerId,
+      userId: this.userId,
       Name: this.profileForm.value.Name,
       id: this.profileForm.value.id,
       address: this.profileForm.value.address,

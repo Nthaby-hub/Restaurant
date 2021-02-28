@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import {Location } from '@angular/common';
+
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-open-restaurant',
@@ -11,34 +14,39 @@ import {Location } from '@angular/common';
 export class OpenRestaurantPage implements OnInit {
 
   items: any;
-  menu: any;
+  menu: Array<any> = [];
+  id: any;
 
-  constructor(private product: ProductsService, private route: Router,private location: Location) { }
+  constructor(private product: ProductsService, 
+    private route: Router,
+    private activatedActivated: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit() {
-    this.product.getRestaurant().subscribe(data_I => {
-      this.items = [];
-      console.log(this.items)
-      data_I.forEach( a => {
-        let data: any = a.payload.doc.data();
-        data.id = a.payload.doc.id;
-        this.items.push(data);
+    this.id = this.activatedActivated.snapshot.paramMap.get('id')
+    console.log('ID: ', this.id)
+
+    firebase.firestore().collection('rest1').where('eventOwnerId', '==', this.id)
+    .onSnapshot(res => {
+      res.forEach(doc => {
+        this.menu.push(Object.assign(doc.data(), { uid: doc.id}))
+        console.log('Menu: ', this.menu)
       })
     })
 
-    this.product.getMenu().subscribe(data_I => {
-      this.menu = [];
-      console.log(this.menu)
-      data_I.forEach( a => {
-        let data: any = a.payload.doc.data();
-        data.id = a.payload.doc.id;
-        this.menu.push(data);
-      })
-    })
+    // this.product.getMenu().subscribe(data_I => {
+    //   this.menu = [];
+    //   console.log(this.menu)
+    //   data_I.forEach( a => {
+    //     let data: any = a.payload.doc.data();
+    //     data.id = a.payload.doc.id;
+    //     this.menu.push(data);
+    //   })
+    // })
   }
   
   open(){
-    this.route.navigateByUrl('user-book')
+    this.route.navigateByUrl('user-book/'+this.id)
   }
   
   prev(){

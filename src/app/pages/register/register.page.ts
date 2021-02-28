@@ -74,7 +74,7 @@ export class RegisterPage implements OnInit {
             console.log('User: ', this.eventOwnerForm.value);
             this.isSubmitted = true;
             if (this.eventOwnerForm.valid) {
-              this.authService.registerUser(this.eventOwnerForm.value.email, this.eventOwnerForm.value.password).then((res) => {
+              this.authService.signupRestOwner(this.eventOwnerForm.value.email, this.eventOwnerForm.value.password).then((res) => {
                 return firebase.firestore().collection('eventUser').doc(res.user.uid).set({
                   username: this.eventOwnerForm.value.username,
                   role: 'eventUser'
