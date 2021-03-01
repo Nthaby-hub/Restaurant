@@ -9,7 +9,7 @@ ion-content{
     align-items: center;
 }
 h1{
-    color: #fff;
+    color: gray;
 }
 .pic{
     background: rgba(136, 133, 85, 0.2);
@@ -21,10 +21,10 @@ h1{
     height: 60%;
     position: relative;
     // top: 40%;
-    background-color: #F7ACCF;
-    border-bottom-left-radius: 120px;
-    border-bottom-right-radius: 120px;
+    // background-color: #F7ACCF;
+    // border-bottom-left-radius: 120px;
+    // border-bottom-right-radius: 120px;
 }
 .rowStyle{
-    border-radius: 6px;
+    border-bottom: solid #f7accf;
 }
