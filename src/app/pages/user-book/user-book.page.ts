@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import * as moment from 'moment'
 import {Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
-import { AlertController } from '@ionic/angular';
+import { AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-user-book',
@@ -24,13 +24,23 @@ export class UserBookPage implements OnInit {
   reservation: FormGroup
   userId: any;
   bookId: any;
+  id: any;
 
   constructor( private prodService: ProductsService, private rout: Router,
     private location: Location, private fb: FormBuilder,
-    private alertCtrl: AlertController) { }
+    private alertCtrl: AlertController,
+    // private navParams: NavParams,
+    private activatedActivated: ActivatedRoute) { }
 
   ngOnInit() {
     this.addDish();
+
+    const user = firebase.auth().currentUser
+    this.userId = user.uid
+    console.log('User Id: ', this.userId)
+
+    this.id = this.activatedActivated.snapshot.paramMap.get('id')
+    console.log('ID: ', this.id)
   }
 
   addDish(){
@@ -55,6 +65,10 @@ export class UserBookPage implements OnInit {
 
             const user = firebase.auth().currentUser
             this.userId = user.uid
+            console.log('User Id: ', this.userId)
+
+            this.id = this.activatedActivated.snapshot.paramMap.get('id')
+            console.log('ID: ', this.id)
 
             firebase.firestore().collection('Reservations').add({
               userId: this.userId,
@@ -63,15 +77,14 @@ export class UserBookPage implements OnInit {
               date: this.reservation.value.date,
               time: this.reservation.value.time,
               child: this.reservation.value.child,
+              id: this.id,
               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             }).then((doc) => {
+
               doc.set({ bookId: doc.id }, { merge: true }).then(() => {
-                console.log('event iddddd: ', this.bookId)
-                // this.router.navigate(['/create-ticket', this.eventId]);
-                // this.eventForm.reset();
+                console.log('Book id: ', this.bookId)
               })
-              // this.nav.navigateRoot('/create-ticket');
-              //this.router.navigate(['/create-ticket', doc.id]);
+
               this.reservation.reset();
             }).catch(function(error){
               console.log(error)

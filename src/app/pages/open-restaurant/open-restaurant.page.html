@@ -11,6 +11,10 @@
 
   
       <p (click)="open()" class="top"><u>Reserve a table</u></p>
+
+      <p *ngIf=" menu.length <= 0">This Restaurant has no menu currently</p>
+
+      <p *ngIf=" menu.length > 0" ></p>
   
     <ion-card *ngFor="let prod of menu">
       <ion-card-header>

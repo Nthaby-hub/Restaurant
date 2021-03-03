@@ -27,6 +27,7 @@ export class ProfilePage implements OnInit {
   images: any =[];
   allfiles: any =[];
   profile = {} as Profiling;
+  clientCode: any;
 
   constructor( private product: ProductsService, private modalCtrl: ModalController,
     private fb: FormBuilder, private rout: Router) { 
@@ -39,7 +40,7 @@ export class ProfilePage implements OnInit {
   
   saveProfile() {
     this.profileForm = this.fb.group({
-      clientCode: ['', Validators.required],
+      // clientCode: ['', Validators.required],
       companyName: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')]],
@@ -48,9 +49,9 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  get clientCode() {
-    return this.profileForm.get("clientCode");
-  }
+  // get clientCode() {
+  //   return this.profileForm.get("clientCode");
+  // }
 
   get companyName() {
     return this.profileForm.get("companyName");
@@ -79,9 +80,11 @@ export class ProfilePage implements OnInit {
     const user = firebase.auth().currentUser;
     this.eventOwnerId = user.uid;
 
+    this.clientCode = this.companyName+this.eventOwnerId;
+
     firebase.firestore().collection('restProfile').doc(this.eventOwnerId).set({
       eventOwnerId: this.eventOwnerId,
-      clientCode: this.profileForm.value.clientCode,
+      clientCode: this.clientCode,
       companyName: this.profileForm.value.companyName,
       address: this.profileForm.value.address,
       phone: this.profileForm.value.phone,
@@ -112,72 +115,5 @@ export class ProfilePage implements OnInit {
   close(){
     this.modalCtrl.dismiss();
   }
-    fileuploads(event)
-    {
-        const files = event.target.files;
-        console.log(files);
-        if(files)
-        {
-          for (let i = 0; i <  files.length; i++){
-            const image={
-              name : '',
-              type : '',
-              size : '',
-              url : ''
-            };
-            this.allfiles.push(files[i]);
-            image.name = files[i].name;
-            image.type = files[i].type;
-            const size = files[i].size / 1000;
-            const mbc = size + '';
-            const mb = mbc.split('.')[0];
-            const length = mb.length;
-              if(length === 4 || length === 5)
-              {
-                const mbsize = size /1000;
-                const splitdata = mbsize + '';
-                const splitvalues = splitdata.split('.');
-                let secondaryvariable ='';
-                for(let j=0; j < splitvalues.length;j++)
-                {
-                  if(j===1)
-                  {
-                    secondaryvariable = splitvalues[j].slice(0,2);
-                  }
-                }
-                image.size = splitvalues[0] + '.' + secondaryvariable + 'MB'
-              }else{
-                const splitdata = size + '';
-                const splitvalues = splitdata.split('.');
-                let secondaryvariable ='';
-                for(let j=0; j < splitvalues.length;j++)
-                {
-                  if(j===1)
-                  {
-                    secondaryvariable = splitvalues[j].slice(0,2);
-                  }
-                }
-                image.size = splitvalues[0] + '.' + secondaryvariable + 'KB'
-              }
-            const reader = new FileReader();
-            reader.onload = (filedata)=>{
-              image.url = reader.result + '';
-              this.images.push(image);
-            };
-            reader.readAsDataURL(files[i]);
-          }
-        }
-          event.srcElement.value = null;
-    }
-    deleteImage(image: any)
-    {
-      const index = this.images.indexOf(image);
-      this.images.splice(index, 1);
-      this.allfiles.splice(index, 1);
-    }
-    save()
-    {
-      console.log(this.allfiles);
-    }
 
 }

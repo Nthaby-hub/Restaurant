@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
   },
   {
-    path: 'user-book',
+    path: 'user-book/:id',
     loadChildren: () => import('./pages/user-book/user-book.module').then( m => m.UserBookPageModule)
   },
   {
@@ -72,7 +72,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
   {
-    path: 'open-restaurant',
+    path: 'open-restaurant/:id',
     loadChildren: () => import('./pages/open-restaurant/open-restaurant.module').then( m => m.OpenRestaurantPageModule)
   },
   {

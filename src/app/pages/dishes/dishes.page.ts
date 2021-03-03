@@ -10,6 +10,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
 import { AddDishPage } from './add-dish/add-dish.page';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dishes',
@@ -30,21 +31,42 @@ export class DishesPage implements OnInit {
   restId: any;
 
   private todo : FormGroup;
+  userC: any;
+  food: Array<any> = []
 
   constructor( private product: ProductsService, private modalCtrl: ModalController, private fb: FormBuilder,
      private location: Location,
      public loadingCtrl: LoadingController, 
-     private alertCtrl: AlertController) { }
+     private alertCtrl: AlertController,
+     private authService: AuthService) { }
 
   ngOnInit() {
-    this.product.getMenu().subscribe(data_I => {
-      this.items = [];
-      data_I.forEach( a => {
-        let data: any = a.payload.doc.data();
-        data.id = a.payload.doc.id;
-        this.items.push(data);
-      })
+
+    const user = firebase.auth().currentUser
+    console.log("user: ",user)
+
+    firebase.auth().onAuthStateChanged((users) => {
+      if(users){
+        this.eventOwnerId = this.authService.getSession()
+        this.eventOwnerId = user.uid
+
+        firebase.firestore().collection('rest1').where("eventOwnerId", "==", this.eventOwnerId)
+        .onSnapshot(res => {
+          res.forEach(doc => {
+            this.food.push(Object.assign(doc.data(), {uid: doc.id}))
+            console.log('Products: ', this.food)
+          })
+        })
+      }
     })
+    // this.product.getMenu().subscribe(data_I => {
+    //   this.items = [];
+    //   data_I.forEach( a => {
+    //     let data: any = a.payload.doc.data();
+    //     data.id = a.payload.doc.id;
+    //     this.items.push(data);
+    //   })
+    // })
 
     this.addDish();
    }

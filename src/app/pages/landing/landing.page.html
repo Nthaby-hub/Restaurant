@@ -7,16 +7,16 @@
 
 <ion-content>
   
-  <h3>Most Popular</h3>
+  <!-- <h3>Most Popular</h3> -->
 
-  <ion-card *ngFor="let rest of items" (click)="open()">
-    <img src="assets/fish.jpg" height="150px">
+  <ion-card *ngFor="let rest of items" [routerLink]="'/open-restaurant/'+rest?.id">
+    <!-- <img  src={{rest.imgUrl}} height="150px"> -->
     <ion-card-header>
       <ion-card-title align="center" style="color: rgba(218, 131, 187, 0.7);">{{rest.companyName}}</ion-card-title>
       <ion-label align="center">Come have a good time with us...</ion-label>
     </ion-card-header>
   </ion-card>
 
-  <h3>Nearby</h3>
+  <!-- <h3>Nearby</h3> -->
 
 </ion-content>

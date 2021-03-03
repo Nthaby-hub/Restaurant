@@ -32,7 +32,7 @@ export class UserProfilePage implements OnInit {
         console.log('login USER: ', this.userM)
         console.log()
       
-            firebase.firestore().collection('restProfile').where('eventOwnerId', '==', this.userM).onSnapshot(res => {
+            firebase.firestore().collection('UserProfile').where('userId', '==', this.userM).onSnapshot(res => {
               res.forEach(element => {
                 this.profiles.push(Object.assign(element.data(), { uid: element.id }));
                 console.log('PROFILES: ', this.profiles);
@@ -40,7 +40,7 @@ export class UserProfilePage implements OnInit {
                 // this.going = element.data().going.length
                 console.log('userID: ', this.userId)
     
-                firebase.firestore().collection('restProfile').doc(this.userId).get().then((res) => {
+                firebase.firestore().collection('UserProfile').doc(this.userId).get().then((res) => {
                   this.userProfile = res.data();
                   console.log('my - profile: ', this.userProfile)
                 });
@@ -59,6 +59,8 @@ export class UserProfilePage implements OnInit {
   }
 
   logout(){
+    this.authService.logoutRestOwner();
+    this.authService.signAuth();
     this.rout.navigateByUrl('home')
   }
 

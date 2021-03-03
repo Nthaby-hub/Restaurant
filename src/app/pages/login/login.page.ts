@@ -8,6 +8,7 @@ import { AlertController, LoadingController, ToastController } from '@ionic/angu
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
@@ -30,16 +31,17 @@ export class LoginPage implements OnInit {
   username: any;
   role: any;
   profiles: any;
-  idNum: any;
   profID: any;
   comProf: Array<any> = [];
   eventId: any;
   companyProf: any;
+  idNum: any;
 
   constructor(private location: Location, private rout: Router, 
     private authService: AuthService,private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,private alertCtrl: AlertController,
-    public toastCtrl: ToastController,public loadingCtrl: LoadingController,) { }
+    public toastCtrl: ToastController,public loadingCtrl: LoadingController,
+    private afs: AngularFirestore) { }
 
   ngOnInit() {
     this.loginUser()
@@ -64,10 +66,8 @@ export class LoginPage implements OnInit {
 
     this.authService.signAuth();
 
-   // const loading = await this.loadingCtrl.create();
-
     console.log(this.eventLoginForm.value)
-    this.isSubmitted = true;
+    
     // Logging in the current owner/user  
     this.authService.signinRestOwner(this.eventLoginForm.value.email, this.eventLoginForm.value.password).then((res) => {
       console.log('logged in: ', res.user)
@@ -95,12 +95,12 @@ export class LoginPage implements OnInit {
           console.log('client Codee: ', this.idNum)
 
           // Checking if the client code is available before logging in
-          if (this.idNum) {
+          if (!this.idNum) {
             console.log(' IF Client Code: ', this.idNum)
-            this.rout.navigateByUrl("landing");
+            this.rout.navigateByUrl("complete");
           } else {
             console.log('Else User Client Code: ', this.idNum)
-            this.rout.navigateByUrl("complete");
+            this.rout.navigateByUrl("landing");
           }
 
         })
