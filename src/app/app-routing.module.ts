@@ -87,6 +87,11 @@ const routes: Routes = [
     path: 'edit-rest/:id',
     loadChildren: () => import('./pages/edit-rest/edit-rest.module').then( m => m.EditRestPageModule)
   },
+  {
+    path: 'edit-user/:id',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then( m => m.EditUserPageModule)
+  },
+
 
 
 ];

@@ -4,30 +4,10 @@
     <form class="book" [formGroup]="reservation" (ngSubmit)="bookReservation()">
       <h4 align="center">Reserve A Table</h4>
 
-<<<<<<< HEAD
-    <ion-item>
-      <ion-input type="text" placeholder="Enter Name(s)" formControlName="name" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Number of people" formControlName="people" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime value="2021-12-19" placeholder="Select Date" formControlName="date" required></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Time</ion-label>
-      <ion-datetime formControlName="time" display-format="h:mm A" picker-format="h:mm A" value="2022-12-19T07:43Z" required></ion-datetime>
-    </ion-item><br>
-      <ion-button expand="full" (click)="bookReservation()">BOOK</ion-button>
-    
-
-  </form>
-=======
-      <ion-item lines="none">
+      <!-- <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Name(s)" formControlName="name" required></ion-input>
-      </ion-item>
-      <br>
+      </ion-item> 
+      <br>-->
       <ion-item lines="none">
         <!-- <ion-input type="number" placeholder="Number of people" required></ion-input> -->
         <ion-label style="color: gray;">Number of People</ion-label>
@@ -70,6 +50,5 @@
       
     </form>
   </div>
->>>>>>> f341f54afcfac9c736f4483fb49dc5330024f85d
 
 </ion-content>

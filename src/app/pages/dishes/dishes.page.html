@@ -6,6 +6,14 @@
 </ion-header>
 
 <ion-content>
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="presentModal()">
+        <ion-icon size="large" name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+
   <div class="evt">
 
     <h3 style="font-weight: bold;">Available Dishes</h3>
@@ -24,15 +32,8 @@
           <b>Price: R{{prod.price}} </b>
         </ion-label>
       </div>
-      <ion-icon size="large" name="trash-outline"  (click)="deleteFood(prod.id)"></ion-icon>
+      <ion-icon size="large" name="trash-outline"  (click)="deleteFood(prod.restId)"></ion-icon>
     </ion-card>
 
-    <ion-fab vertical="top" horizontal="end" float>
-      <ion-fab-button (click)="presentModal()">
-        <ion-icon size="large" name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-  
   </div>
-
 </ion-content>

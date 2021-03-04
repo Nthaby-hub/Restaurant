@@ -21,8 +21,10 @@
         </ion-item>
       </div>
     </div><div class="top">
-      <ion-avatar style="width: 100px; height: 100px;">
-        <img src="assets/fish.jpg">
+      <ion-icon size="large" style="position: relative; left: 85%;" 
+      name="pencil-outline" (click)="editProfile()"></ion-icon>
+      <ion-avatar style="width: 100px; height: 100px; position: relative; bottom: 12%;">
+        <img src="{{userProfile?.imgUrl}}">
       </ion-avatar>
     
       <ion-label class="name" style="font-size: large;">
