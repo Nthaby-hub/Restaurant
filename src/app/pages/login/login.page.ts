@@ -36,6 +36,7 @@ export class LoginPage implements OnInit {
   eventId: any;
   companyProf: any;
   idNum: any;
+  userId: any
 
   constructor(private location: Location, private rout: Router, 
     private authService: AuthService,private activatedRoute: ActivatedRoute,
@@ -81,34 +82,52 @@ export class LoginPage implements OnInit {
         this.username = snapshot.get('username');
         this.role = snapshot.get('role')
 
-        // const toast = await this.toastCtrl.create({
-        //   message: "Welcome " + this.username,
-        //   duration: 3000
-        // });
-        // toast.present();
+        if(this.role == 'eventUser'){
 
         // Fetching company profile to get the client code
-        firebase.firestore().collection('UserProfile').doc(user).get().then((snapshot) => {
-          this.companyProf = snapshot.data();
-          console.log('only profile: ', this.companyProf)
-          this.idNum = snapshot.get('id')
-          console.log('client Codee: ', this.idNum)
+          firebase.firestore().collection('UserProfile').doc(user).get().then((snapshot) => {
+            this.companyProf = snapshot.data();
+            console.log('only profile: ', this.companyProf)
+            this.idNum = snapshot.get('id')
+            console.log('client Codee: ', this.idNum)
 
-          // Checking if the client code is available before logging in
-          if (!this.idNum) {
-            console.log(' IF Client Code: ', this.idNum)
-            this.rout.navigateByUrl("complete");
-          } else {
-            console.log('Else User Client Code: ', this.idNum)
-            this.rout.navigateByUrl("landing");
-          }
+            // Checking if the client code is available before logging in
+            if (!this.idNum) {
+              console.log(' IF Client Code: ', this.idNum)
+              this.rout.navigateByUrl("complete");
+            } else {
+              console.log('Else User Client Code: ', this.idNum)
+              this.rout.navigateByUrl("landing");
+            }
 
-        })
+          })
+        } else{
+          const alert = await this.alertCtrl.create({
+
+            message: `Email not registered as a user. Click ok to register`,
+            buttons: [
+              {
+                text: 'Cancel',
+                handler: () => {
+                  this.rout.navigateByUrl('login')
+                }
+              },
+              {
+                text: 'Ok',
+                handler: () => {
+                  this.rout.navigateByUrl('/register')
+                }
+              }
+            ]
+      
+          });
+          return await alert.present();
+        }
 
       })
 
     }).then(() => {
-        this.rout.navigateByUrl('landing')
+        // this.rout.navigateByUrl('landing')
       
     },
       async error => {

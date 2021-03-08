@@ -77,6 +77,8 @@ export class DishesPage implements OnInit {
 
   deleteFood(id){
     this.product.deleteFood(id)
+    console.log('item id: ', id)
+    // firebase.firestore().collection('Products').doc(id).delete()
   }
 
   async presentModal() {

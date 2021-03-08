@@ -77,39 +77,56 @@ export class ALoginPage implements OnInit {
       let user = firebase.auth().currentUser.uid
       console.log('user: ', user)
       // Fetching the event owners to get their username when logged in
-      firebase.firestore().collection('RestaurantOwners').doc(user).get().then(async (snapshot) => {
+      firebase.firestore().collection('RestaurantOwner').doc(user).get().then(async (snapshot) => {
         this.owners = snapshot.data();
         this.username = snapshot.get('username');
         this.role = snapshot.get('role')
 
-        // const toast = await this.toastCtrl.create({
-        //   message: "Welcome " + this.username,
-        //   duration: 3000
-        // });
-        // toast.present();
+        if(this.role == 'resttOwner'){
+          firebase.firestore().collection('restProfile').doc(user).get().then((snapshot) => {
+            this.companyProf = snapshot.data();
+            console.log('only profile: ', this.companyProf)
+            this.clientCode = snapshot.get('clientCode')
+            console.log('client Codee: ', this.clientCode)
 
-        // Fetching company profile to get the client code
-        firebase.firestore().collection('restProfile').doc(user).get().then((snapshot) => {
-          this.companyProf = snapshot.data();
-          console.log('only profile: ', this.companyProf)
-          this.clientCode = snapshot.get('clientCode')
-          console.log('client Codee: ', this.clientCode)
+            // Checking if the client code is available before logging in
+            if (this.clientCode) {
+              console.log(' IF Client Code: ', this.clientCode)
+              this.rout.navigateByUrl("dashboard");
+            } else {
+              console.log('Else User Client Code: ', this.clientCode)
+              this.rout.navigateByUrl("profile");
+            }
 
-          // Checking if the client code is available before logging in
-          if (this.clientCode) {
-            console.log(' IF Client Code: ', this.clientCode)
-            this.rout.navigateByUrl("dashboard");
-          } else {
-            console.log('Else User Client Code: ', this.clientCode)
-            this.rout.navigateByUrl("profile");
-          }
+          })
+        }else{
+          const alert = await this.alertCtrl.create({
 
-        })
+            message: `Email not registered as a restaurent owner. Click ok to register`,
+            buttons: [
+              {
+                text: 'Cancel',
+                handler: () => {
+                  this.rout.navigateByUrl('a-login')
+                }
+              },
+              {
+                text: 'Ok',
+                handler: () => {
+                  this.rout.navigateByUrl('/register')
+                }
+              },
+              
+            ]
+      
+          });
+          return await alert.present();
+        }
 
       })
 
     }).then(() => {
-        this.rout.navigateByUrl('dashboard')
+        // this.rout.navigateByUrl('dashboard')
       
     },
       async error => {

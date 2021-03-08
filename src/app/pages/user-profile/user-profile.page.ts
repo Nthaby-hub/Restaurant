@@ -51,7 +51,7 @@ export class UserProfilePage implements OnInit {
   }
 
   editProfile(){
-    this.rout.navigate(['/edit-rest', this.userId])
+    this.rout.navigate(['/edit-user', this.userId])
   }
 
   openR(){

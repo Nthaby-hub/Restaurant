@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Edit Restaurant</ion-title>
+    <ion-title>Edit User</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,8 +9,8 @@
   <div class="cont">
   <form [formGroup]="updateForm" (ngSubmit)="save()">
     <ion-item>
-      <ion-label>Company Name</ion-label>
-      <ion-input formControlName="companyName"> </ion-input>
+      <ion-label>Full Name</ion-label>
+      <ion-input formControlName="Name"> </ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
@@ -19,10 +19,6 @@
     <ion-item>
       <ion-label>Contact Number</ion-label>
       <ion-input formControlName="phone"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Website</ion-label>
-      <ion-input formControlName="website"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Physical Address</ion-label>

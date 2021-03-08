@@ -25,6 +25,8 @@ export class UserBookPage implements OnInit {
   userId: any;
   bookId: any;
   id: any;
+  details: any;
+  username: any;
 
   constructor( private prodService: ProductsService, private rout: Router,
     private location: Location, private fb: FormBuilder,
@@ -41,11 +43,12 @@ export class UserBookPage implements OnInit {
 
     this.id = this.activatedActivated.snapshot.paramMap.get('id')
     console.log('ID: ', this.id)
+    
   }
 
   addDish(){
     this.reservation = this.fb.group({
-      name: ['', Validators.required],
+      // name: ['', Validators.required],
       people: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
@@ -70,25 +73,31 @@ export class UserBookPage implements OnInit {
             this.id = this.activatedActivated.snapshot.paramMap.get('id')
             console.log('ID: ', this.id)
 
-            firebase.firestore().collection('Reservations').add({
-              userId: this.userId,
-              name: this.reservation.value.name,
-              people: this.reservation.value.people,
-              date: this.reservation.value.date,
-              time: this.reservation.value.time,
-              child: this.reservation.value.child,
-              id: this.id,
-              createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            }).then((doc) => {
+            firebase.firestore().collection('UserProfile').doc(this.userId).get().then((res) => {
+              this.details = res.data();
+              console.log('User details: ', this.details)
+              this.username = res.get('Name');
+            
+              firebase.firestore().collection('Reservations').add({
+                userId: this.userId,
+                name: this.username,
+                people: this.reservation.value.people,
+                date: this.reservation.value.date,
+                time: this.reservation.value.time,
+                child: this.reservation.value.child,
+                id: this.id,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+              }).then((doc) => {
 
-              doc.set({ bookId: doc.id }, { merge: true }).then(() => {
-                console.log('Book id: ', this.bookId)
-              })
+                doc.set({ bookId: doc.id }, { merge: true }).then(() => {
+                  console.log('Book id: ', this.bookId)
+                })
 
-              this.reservation.reset();
-            }).catch(function(error){
-              console.log(error)
-            });
+                this.reservation.reset();
+              }).catch(function(error){
+                console.log(error)
+              });
+            })
           },
         },
       ]

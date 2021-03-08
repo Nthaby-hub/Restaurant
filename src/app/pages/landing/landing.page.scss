@@ -1,8 +1,11 @@
-ion-card{
+ion-card-header{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
+}
+ion-card{
+    background: rgb(255, 250, 254);
 }
 // img{
 //     display: flex;

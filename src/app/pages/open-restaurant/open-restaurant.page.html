@@ -1,6 +1,6 @@
 
-<ion-content>
   <ion-icon (click)="prev()" size="large" name="chevron-back-outline"></ion-icon>
+<ion-content>
 
   <div class="container">
   <div *ngFor="let r of items">
@@ -22,7 +22,7 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item lines="none">
-          <img [src]="prod.imgUrl" height="100px">
+          <img [src]="prod.imgUrl" height="100px" width="150px">
         </ion-item>
         <ion-item lines="none">
           <b>Price: R{{prod.price}} </b>

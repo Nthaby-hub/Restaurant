@@ -54,4 +54,13 @@ export class ReservationsPage implements OnInit {
     this.location.back()
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.complete();
+    }, 2000);
+  }
+
 }
