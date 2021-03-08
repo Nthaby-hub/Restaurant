@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,7 +29,8 @@ export class EditRestPage implements OnInit {
     private authService: AuthService,
     private loaderCtrl: LoadingController,
     private alertCtrl: AlertController,
-    public toastCtrl: ToastController) { }
+    public toastCtrl: ToastController,
+    private location: Location) { }
 
   ngOnInit() {
 
@@ -127,6 +129,10 @@ export class EditRestPage implements OnInit {
       toast.present();
     });
 
+  }
+
+  prev(){
+    this.location.back()
   }
 
 

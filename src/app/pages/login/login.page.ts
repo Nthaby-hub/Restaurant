@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
   loginUser() {
     this.eventLoginForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.0]+.[a-zA-Z]{2,4}$')]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     });
   }
 
@@ -61,6 +61,19 @@ export class LoginPage implements OnInit {
 
   get password() {
     return this.eventLoginForm.get("password");
+  }
+
+  public errorMessages = {
+    email: [
+      {type: 'required', message: '*required'},
+      {type: 'required', message: 'Please enter a valid email'}
+    ],
+    password: [
+      {type: 'required', message: '*required'},
+      {type: 'required', message: 'Please enter a valid password'},
+      {type: 'minlength', message: 'Password length can not be less than 5'},
+      {type: 'maxlength', message: 'Password length has to be longer than 5'}
+    ]
   }
 
   async signinUser() {

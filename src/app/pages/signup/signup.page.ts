@@ -35,10 +35,10 @@ export class SignupPage implements OnInit {
 
   addOwner() {
     this.eventOwnerForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required,Validators.minLength(4), Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.0]+.[a-zA-Z]{2,4}$')]],
       // mobile: ['',  [ Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     });
   }
 
@@ -52,6 +52,23 @@ export class SignupPage implements OnInit {
 
   get password() {
     return this.eventOwnerForm.get("password");
+  }
+
+  public errorMessages = {
+    username: [
+      { type: 'required', message: 'Username is required' },
+      { type: 'minlength', message: 'Password cannot be less than 4 characters.' },
+      { type: 'maxlength', message: 'Username cannot be longer than 50 characters' }
+    ],
+    email: [
+      { type: 'required', message: 'Email is required' },
+      { type: 'pattern', message: 'Please provide valid email.' }
+    ],
+    password: [
+      { type: 'required', message: 'Password is required.' },
+      { type: 'minlength', message: 'Password cannot be less than 5 characters.' },
+      { type: 'maxlength', message: 'Password cannot be more than 15 characters.' }
+    ]
   }
 
   async registerOwner() {
@@ -88,18 +105,6 @@ export class SignupPage implements OnInit {
     return await alert.present();
 
 
-  }
-
-  validateForm(email, password){
-    if(email.length === 0){
-      alert("Please Enter Email Address");
-      return false;
-    }
-    if(password.length === 0){
-      alert("Please Enter Password");
-      return false;
-    }
-    return true;
   }
 
   prev(){

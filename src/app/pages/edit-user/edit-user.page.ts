@@ -5,6 +5,7 @@ import { AlertController, LoadingController, ToastController } from '@ionic/angu
 import { AuthService } from 'src/app/services/auth.service';
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-user',
@@ -26,7 +27,8 @@ export class EditUserPage implements OnInit {
     private authService: AuthService,
     private loaderCtrl: LoadingController,
     private alertCtrl: AlertController,
-    public toastCtrl: ToastController) { }
+    public toastCtrl: ToastController,
+    private location: Location) { }
 
   ngOnInit() {
 
@@ -122,6 +124,10 @@ export class EditUserPage implements OnInit {
       toast.present();
     });
 
+  }
+
+  prev(){
+    this.location.back()
   }
 
 }

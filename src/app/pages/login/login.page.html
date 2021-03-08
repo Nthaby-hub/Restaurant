@@ -12,11 +12,21 @@
           <ion-icon name="person"></ion-icon>
           <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
         </ion-item>
+        <div *ngFor="let error of errorMessages.email">
+          <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
         <br>
         <ion-item class="rowStyle">
           <ion-icon name="lock-closed"></ion-icon>
           <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
         </ion-item>
+        <div *ngFor="let error of errorMessages.password">
+          <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
         <br>
         <ion-button expand="block" (click)="signinUser()">
           Sign-In

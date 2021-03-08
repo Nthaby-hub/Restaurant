@@ -27,10 +27,10 @@ export class RegisterPage implements OnInit {
 
   addOwner(){
     this.eventOwnerForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required,Validators.minLength(4), Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.0]+.[a-zA-Z]{2,4}$')]],
       // mobile: ['',  [ Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     });
   }
 
@@ -49,7 +49,8 @@ export class RegisterPage implements OnInit {
   public errorMessages = {
     username: [
       { type: 'required', message: 'Username is required' },
-      { type: 'maxLength', message: 'Username cannot be longer than 100 characters' }
+      { type: 'minlength', message: 'Username cannot be less than 3 characters.' },
+      { type: 'maxlength', message: 'Username cannot be longer than 50 characters' }
     ],
     email: [
       { type: 'required', message: 'Email is required' },
@@ -58,7 +59,7 @@ export class RegisterPage implements OnInit {
     password: [
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password cannot be less than 5 characters.' },
-      { type: 'maxlength', message: 'Password cannot be more than 10 characters.' }
+      { type: 'maxlength', message: 'Password cannot be more than 15 characters.' }
     ]
   }
 

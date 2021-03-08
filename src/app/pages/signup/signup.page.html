@@ -3,6 +3,10 @@
   <div class="">
     <ion-icon (click)="prev()" style="color: #f7accf;" name="chevron-back-outline" size="large"></ion-icon>
   </div>
+
+  
+  <h1 style="font-size: xx-large; font-weight: 700; color: #56237a; position: relative; " align="center">The EATERY</h1>
+
 <div class="cont">
   <div class="register">
     <h1 color="light" align="center">Sign Up</h1>
@@ -13,18 +17,33 @@
           <ion-icon name="person"></ion-icon>
           <ion-input placeholder="Username" formControlName="username" type="text" name="username"></ion-input>
         </ion-item>
+        <div *ngFor="let error of errorMessages.username">
+          <ng-container *ngIf="username.hasError(error.type) && (username.dirty || username.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
         <br>
 
         <ion-item class="rowStyle">
           <ion-icon name="mail"></ion-icon>
           <ion-input placeholder="Email" formControlName="email" type="email" name="email"></ion-input>
         </ion-item>
+        <div *ngFor="let error of errorMessages.email">
+          <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
         <br>
 
         <ion-item class="rowStyle">
           <ion-icon name="lock-closed"></ion-icon>
           <ion-input placeholder="Password" formControlName="password" type="password" name="password"></ion-input>
         </ion-item>
+        <div *ngFor="let error of errorMessages.password">
+          <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
         <br>
 
         <ion-button style="--background: #f7accf " expand="block" (click)="registerOwner()">
@@ -36,8 +55,7 @@
   </div>
 </div>
 
-      <ion-item lines="none">
-        <ion-label style="color: #56237a;" align="center" color="primary" (click)="login()">Sign-In</ion-label>
+     <ion-item lines="none">
+      <ion-label style="color: #56237a;" align="center" color="primary" (click)="login()">Sign-In</ion-label>
       </ion-item>
-      <h1 style="font-size: xx-large; font-weight: 700; color: #56237a; position: relative; " align="center">The EATERY</h1>
 </ion-content>

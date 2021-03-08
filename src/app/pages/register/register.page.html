@@ -10,15 +10,30 @@
 
     <ion-item class="rowStyle">
       <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
-    </ion-item> 
+    </ion-item>
+    <div *ngFor="let error of errorMessages.username">
+      <ng-container *ngIf="username.hasError(error.type) && (username.dirty || username.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
     <br>
     <ion-item class="rowStyle">
       <ion-input type="email" name="email" formControlName="email" placeholder="Email Address"></ion-input>
     </ion-item>
+    <div *ngFor="let error of errorMessages.email">
+      <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
     <br>
     <ion-item class="rowStyle">
       <ion-input type="password" name="password" formControlName="password" placeholder="Password"></ion-input>
     </ion-item>
+    <div *ngFor="let error of errorMessages.password">
+      <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
     <br>
     <!-- <ion-item lines="none">
       <ion-input type="password" placeholder="re-Enter Password" [(ngModel)]="rePassword"></ion-input>

@@ -7,6 +7,9 @@ ion-content{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // border: solid;
+    position: relative;
+    top: 13%;
 }
 h1{
     color: gray;
@@ -27,4 +30,7 @@ h1{
 }
 .rowStyle{
     border-bottom: solid #f7accf;
+}
+.error-message {
+    color: var(--ion-color-danger);
 }
